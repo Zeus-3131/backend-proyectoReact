@@ -24,23 +24,39 @@ class UsersManager {
 
   async createUser(data) {
     try {
-      const user = {
-        id: crypto.randomBytes(12).toString("hex"),
-        username: data.username,
-        email: data.email,
-        password: data.password,
-        role: data.role || "user",
-      };
-      this.users.push(user);
-      const jsonData = JSON.stringify(this.users, null, 2);
-      await fs.promises.writeFile(this.path, jsonData);
-      console.log("Usuario creado con id: " + user.id);
-      return user.id;
+        const { username, email, password } = data;
+
+        if (!username || !email || !password) {
+            throw new Error("Los campos 'username', 'email' y 'password' son obligatorios");
+        }
+
+        const trimmedUsername = username.trim();
+        const trimmedEmail = email.trim();
+        const trimmedPassword = password.trim();
+
+        if (trimmedUsername === '' || trimmedEmail === '' || trimmedPassword === '') {
+            throw new Error("Los campos 'username', 'email' y 'password' no pueden estar vacíos");
+        }
+
+        const user = {
+            id: crypto.randomBytes(12).toString("hex"),
+            username: trimmedUsername,
+            email: trimmedEmail,
+            password: trimmedPassword,
+            role: data.role || "user",
+        };
+
+        this.users.push(user);
+        const jsonData = JSON.stringify(this.users, null, 2);
+        await fs.promises.writeFile(this.path, jsonData);
+
+        console.log("Usuario creado con id: " + user.id);
+        return user.id;
     } catch (error) {
-      console.log(error.message);
-      throw error.message;
+        throw error;
     }
-  }
+}
+
 
   readUsers() {
     try {

@@ -143,25 +143,27 @@ server.delete("/api/events/:eid", async (req, res) => {
 // Endpoints para Users
 server.post("/api/users", async (req, res) => {
   try {
-    const data = req.body;
-    const response = await users.createUser(data);
-    if (response === "Name is required") {
-      return res.json({
-        statusCode: 400,
-        message: response,
+      const data = req.body;
+      const response = await users.createUser(data);
+
+      return res.status(201).json({
+          statusCode: 201,
+          response,
       });
-    } else {
-      return res.json({
-        statusCode: 201,
-        response,
-      });
-    }
   } catch (error) {
-    console.log(error);
-    return res.json({
-      statusCode: 500,
-      message: error.message,
-    });
+      if (error.message === "Los campos 'username', 'email' y 'password' son obligatorios" ||
+          error.message === "Los campos 'username', 'email' y 'password' no pueden estar vacíos") {
+          return res.status(400).json({
+              statusCode: 400,
+              message: error.message,
+          });
+      }
+
+      console.log(error);
+      return res.status(500).json({
+          statusCode: 500,
+          message: "Error interno del servidor",
+      });
   }
 });
 
@@ -241,22 +243,23 @@ server.post("/api/products", async (req, res) => {
   try {
     const data = req.body;
     const response = await products.createProduct(data);
-    if (response === "Name is required") {
-      return res.json({
+
+    return res.status(201).json({
+      statusCode: 201,
+      response,
+    });
+  } catch (error) {
+    if (error.message === "El nombre del producto es requerido") {
+      return res.status(400).json({
         statusCode: 400,
-        message: response,
-      });
-    } else {
-      return res.json({
-        statusCode: 201,
-        response,
+        message: error.message,
       });
     }
-  } catch (error) {
+
     console.log(error);
-    return res.json({
+    return res.status(500).json({
       statusCode: 500,
-      message: error.message,
+      message: "Error interno del servidor",
     });
   }
 });

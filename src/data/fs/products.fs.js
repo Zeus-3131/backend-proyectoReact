@@ -2,11 +2,7 @@ import fs from "fs";
 import crypto from "crypto";
 
 class ProductsManager {
-  constructor(path) {
-    this.path = path;
-    this.products = [];
-    this.init();
-  }
+  #ivaRate = 0.19; // Variable para el IVA en Colombia
 
   init() {
     try {
@@ -22,23 +18,37 @@ class ProductsManager {
     }
   }
 
+  constructor(path) {
+    this.path = path;
+    this.products = [];
+    this.init();
+  }
+
   async createProduct(data) {
     try {
-      const product = {
-        id: crypto.randomBytes(12).toString("hex"),
-        name: data.name,
-        price: data.price || 10,
-        stock: data.stock || 50,
-        category: data.category || "General",
-      };
+      if (!data.nombre || data.nombre.trim() === '') {
+        throw new Error("El nombre del producto es requerido");
+      }
+
+        const  product = {
+            id: crypto.randomBytes(12).toString("hex"),
+            nombre: data.nombre,
+            imagen: data.imagen || "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+            precio: data.precio || 300000,
+            stock: data.stock || 50,
+            idcat: crypto.randomBytes(12).toString("hex"),
+            date: data.date || new Date(),
+        };
+
+        
       this.products.push(product);
       const jsonData = JSON.stringify(this.products, null, 2);
       await fs.promises.writeFile(this.path, jsonData);
+  
       console.log("Producto creado con id: " + product.id);
       return product.id;
     } catch (error) {
-      console.log(error.message);
-      throw error.message;
+      throw error;
     }
   }
 
@@ -86,6 +96,31 @@ class ProductsManager {
     } catch (error) {
       console.log(error.message);
       return error.message;
+    }
+  }
+
+  async productSold(quantity, pid) {
+    try {
+      const one = this.readProductById(pid);
+      if (one) {
+        if (one.stock >= quantity) {
+          one.stock = one.stock - quantity;
+          const subtotal = one.price * quantity;
+          const ivaAmount = subtotal * this.#ivaRate;
+          const totalAmount = subtotal + ivaAmount;
+          const jsonData = JSON.stringify(this.products, null, 2);
+          await fs.promises.writeFile(this.path, jsonData);
+          console.log(`Producto vendido. Stock disponible: ${one.stock}`);
+          console.log(`Subtotal: ${subtotal}`);
+          console.log(`IVA (${this.#ivaRate * 100}%): ${ivaAmount}`);
+          console.log(`Total: ${totalAmount}`);
+          return one.stock;
+        } else {
+          console.log("No hay suficiente stock del producto.");
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
 }

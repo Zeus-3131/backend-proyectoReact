@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "2f4d635d150a4f9c8eedfc44",
+    "nombre": "preuba de esto",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "3737373",
+    "stock": 50,
+    "idcat": "0d75d5c7ac85934cbab2d87f",
+    "date": "2024-03-11T21:08:26.924Z"
+  },
+  {
+    "id": "c04b8c0e50a4c10b2fc4e13d",
+    "nombre": "pudrase",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "3737373",
+    "stock": 50,
+    "idcat": "49734f5f44e004e8c33a7135",
+    "date": "2024-03-11T21:08:48.926Z"
+  }
+]

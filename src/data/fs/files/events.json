@@ -126,5 +126,14 @@
     "stock": 50,
     "idcat": "b29d7c9ab77349c951970494",
     "date": "2024-03-11T19:03:41.387Z"
+  },
+  {
+    "id": "9c9ca108890ff88845a5cb13",
+    "nombre": "preuba de esto",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "3737373",
+    "stock": 50,
+    "idcat": "90c228f9295051915aac4877",
+    "date": "2024-03-11T21:07:41.256Z"
   }
 ]
