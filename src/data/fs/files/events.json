@@ -1,0 +1,130 @@
+[
+  {
+    "id": "0bdb16de1f1a8d82f74bb3ce",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 8888,
+    "stock": 50,
+    "idcat": "ee07320e902ea8aed134618f",
+    "date": "2024-03-06T23:09:48.423Z"
+  },
+  {
+    "id": "2d2c8c4ef5a3f2b289048d0b",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 8888,
+    "stock": 50,
+    "idcat": "cda1455586e6b7fb8ef6cd20",
+    "date": "2024-03-06T23:17:02.986Z"
+  },
+  {
+    "id": "6e74224fd791cd9a17ab01c2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 8888,
+    "stock": 50,
+    "idcat": "21de03b66e3ef96c7f9f7f10",
+    "date": "2024-03-06T23:17:39.450Z"
+  },
+  {
+    "id": "e4f7440a20d2ed770f10a980",
+    "nombre": "prueba",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 8888,
+    "stock": 50,
+    "idcat": "5099aa43f9eb1302c1d249b4",
+    "date": "2024-03-06T23:18:47.858Z"
+  },
+  {
+    "id": "19d677051f5c5bdca916a263",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "f7feacfecf52f49ccf92c0ac",
+    "date": "2024-03-06T23:19:26.046Z"
+  },
+  {
+    "id": "7737f4c868fc72f4b5910a32",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "32aee4c83aec35b9418465d3",
+    "date": "2024-03-06T23:19:34.498Z"
+  },
+  {
+    "id": "0e534e281765e1284c07fc79",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "8c7f68e5c36356bc01af3715",
+    "date": "2024-03-06T23:20:03.086Z"
+  },
+  {
+    "id": "831877cb0b377cc6bb432312",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "d75a0c02ac3daa3811992c14",
+    "date": "2024-03-06T23:38:08.923Z"
+  },
+  {
+    "id": "34c2239f3027dab62294d442",
+    "nombre": "prueba24",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "0",
+    "stock": 50,
+    "idcat": "855b166766c415a32ed8c9c5",
+    "date": "2024-03-06T23:39:09.639Z"
+  },
+  {
+    "id": "0fb8d517e4e733e4e4b76b4d",
+    "nombre": "prue",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "8f2d81a40663b0a9873a57af",
+    "date": "2024-03-07T00:03:29.844Z"
+  },
+  {
+    "id": "c240e544eefaea24c7e2fa61",
+    "nombre": "prue",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "4b23112a5214f3128550db62",
+    "date": "2024-03-07T00:08:01.260Z"
+  },
+  {
+    "id": "4aa9ee90dfe6296c307e7289",
+    "nombre": "prueba24",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "4566",
+    "stock": 50,
+    "idcat": "7f4f8292e8904e591166afc3",
+    "date": "2024-03-07T00:23:47.585Z"
+  },
+  {
+    "id": "6f083ad9c2ca47358c4652fa",
+    "nombre": "exilon",
+    "imagen": "exilon",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "0de1bd626abfebd24e20182a",
+    "date": "2024-03-07T01:06:16.297Z"
+  },
+  {
+    "id": "ba967f0f26e325defff538e7",
+    "nombre": "exilon",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": 300000,
+    "stock": 50,
+    "idcat": "fa68b9a451a46565677b5d9f",
+    "date": "2024-03-07T01:15:42.677Z"
+  },
+  {
+    "id": "0d54f0352ba1d507884323d3",
+    "nombre": "preuba de esto",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "3737373",
+    "stock": 50,
+    "idcat": "b29d7c9ab77349c951970494",
+    "date": "2024-03-11T19:03:41.387Z"
+  }
+]
