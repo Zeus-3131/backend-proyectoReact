@@ -1,9 +1,10 @@
 [
   {
     "id": "497ccc716f9904985ad3cb9a",
-    "username": "prueba de esto hoy",
-    "email": "preuba@gmail.com",
-    "role": "user"
+    "username": "nuevoUsername",
+    "email": "nuevo@email.com",
+    "role": "user",
+    "password": "nuevaPassword"
   },
   {
     "id": "b2892c8eb2c1df84e88bef3a",
@@ -27,13 +28,6 @@
     "id": "4d23d189ad47dc987cabc45d",
     "username": "prueba de esto hoy",
     "email": "preuba@gmail.com",
-    "role": "user"
-  },
-  {
-    "id": "1846a29abaa6b70a12a9d449",
-    "username": "prueba de esto hoy",
-    "email": "preuba@gmail.com",
-    "password": "474747474",
     "role": "user"
   }
 ]

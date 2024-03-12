@@ -1,13 +1,5 @@
 [
   {
-    "id": "0bdb16de1f1a8d82f74bb3ce",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 8888,
-    "stock": 50,
-    "idcat": "ee07320e902ea8aed134618f",
-    "date": "2024-03-06T23:09:48.423Z"
-  },
-  {
     "id": "2d2c8c4ef5a3f2b289048d0b",
     "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
     "precio": 8888,
@@ -123,7 +115,7 @@
     "nombre": "preuba de esto",
     "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
     "precio": "3737373",
-    "stock": 50,
+    "stock": 10,
     "idcat": "b29d7c9ab77349c951970494",
     "date": "2024-03-11T19:03:41.387Z"
   },

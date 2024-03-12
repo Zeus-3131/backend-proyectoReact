@@ -90,13 +90,14 @@ server.get("/api/events/:eid", async (req, res) => {
 server.put("/api/events/:eid/:quantity", async (req, res) => {
   try {
     const { eid, quantity } = req.params;
-    const response = await events.soldticket(quantity, eid);
+    const response = await events.productSold(quantity, eid);
+
     if (typeof response === "number") {
       return res.json({
         statusCode: 200,
         response: "capacity available: " + response,
       });
-    } else if (response === "There isn't any event") {
+    } else if (response === "No hay ningún evento con id=" + eid) {
       return res.json({
         statusCode: 404,
         message: response,
@@ -214,6 +215,38 @@ server.get("/api/users/:uid", async (req, res) => {
   }
 });
 
+server.put("/api/users/:eid/:userId", async (req, res) => {
+  try {
+    const { eid, userId } = req.params;
+    const updatedData = req.body;
+
+    const response = await users.updateUser(eid, userId, updatedData);
+
+    if (response === "Usuario actualizado exitosamente") {
+      return res.json({
+        statusCode: 200,
+        message: response,
+      });
+    } else if (response === "No se encontró ningún usuario con ese ID") {
+      return res.json({
+        statusCode: 404,
+        message: response,
+      });
+    } else {
+      return res.json({
+        statusCode: 400,
+        message: response,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      statusCode: 500,
+      message: error.message,
+    });
+  }
+});
+
 server.delete("/api/users/:uid", async (req, res) => {
   try {
     const { uid } = req.params;
@@ -300,6 +333,36 @@ server.get("/api/products/:pid", async (req, res) => {
       return res.json({
         statusCode: 200,
         response: one,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      statusCode: 500,
+      message: error.message,
+    });
+  }
+});
+
+server.put("/api/products/:pid/:quantity", async (req, res) => {
+  try {
+    const { pid, quantity } = req.params;
+    const response = await products.productSold(quantity, pid);
+
+    if (typeof response === "number") {
+      return res.json({
+        statusCode: 200,
+        response: `Stock disponible: ${response}`,
+      });
+    } else if (response === "No hay suficiente stock del producto.") {
+      return res.json({
+        statusCode: 400,
+        message: response,
+      });
+    } else if (response === "No hay ningún producto con id=" + pid) {
+      return res.json({
+        statusCode: 404,
+        message: response,
       });
     }
   } catch (error) {

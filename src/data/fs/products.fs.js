@@ -101,29 +101,34 @@ class ProductsManager {
 
   async productSold(quantity, pid) {
     try {
-      const one = this.readProductById(pid);
-      if (one) {
-        if (one.stock >= quantity) {
-          one.stock = one.stock - quantity;
-          const subtotal = one.price * quantity;
+      const product = this.readProductById(pid);
+      if (product) {
+        if (product.stock >= quantity) {
+          product.stock = product.stock - quantity;
+          const subtotal = product.price * quantity;
           const ivaAmount = subtotal * this.#ivaRate;
           const totalAmount = subtotal + ivaAmount;
+  
           const jsonData = JSON.stringify(this.products, null, 2);
           await fs.promises.writeFile(this.path, jsonData);
-          console.log(`Producto vendido. Stock disponible: ${one.stock}`);
+  
+          console.log(`Producto vendido. Stock disponible: ${product.stock}`);
           console.log(`Subtotal: ${subtotal}`);
           console.log(`IVA (${this.#ivaRate * 100}%): ${ivaAmount}`);
           console.log(`Total: ${totalAmount}`);
-          return one.stock;
+  
+          return product.stock;
         } else {
-          console.log("No hay suficiente stock del producto.");
+          return "No hay suficiente stock del producto.";
         }
+      } else {
+        return "No hay ningún producto con id=" + pid;
       }
     } catch (error) {
       console.log(error.message);
+      throw error;
     }
-  }
-}
+  }}
 
 const products = new ProductsManager("./src/data/fs/files/products.json");
 export default products;

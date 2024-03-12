@@ -87,6 +87,39 @@ class UsersManager {
     }
   }
 
+  async updateUser(eid, userId, updatedData) {
+    try {
+      const userIndex = this.users.findIndex((user) => user.id === userId);
+  
+      if (userIndex === -1) {
+        return "No se encontró ningún usuario con ese ID";
+      }
+  
+      const { username, email, password } = updatedData;
+  
+      const trimmedUsername = username ? username.trim() : this.users[userIndex].username;
+      const trimmedEmail = email ? email.trim() : this.users[userIndex].email;
+      const trimmedPassword = password ? password.trim() : this.users[userIndex].password;
+  
+      const updatedUser = {
+        ...this.users[userIndex],
+        username: trimmedUsername,
+        email: trimmedEmail,
+        password: trimmedPassword,
+      };
+  
+      this.users[userIndex] = updatedUser;
+  
+      const jsonData = JSON.stringify(this.users, null, 2);
+      await fs.promises.writeFile(this.path, jsonData);
+  
+      return "Usuario actualizado exitosamente";
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  }
+
   async destroyUserById(id) {
     try {
       let one = this.users.find((each) => each.id === id);

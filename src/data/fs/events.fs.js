@@ -107,25 +107,27 @@ class EventsManager {
           const subtotal = one.precio * quantity;
           const ivaAmount = subtotal * this.#ivaRate;
           const totalAmount = subtotal + ivaAmount;
-
+  
           const jsonData = JSON.stringify(this.events, null, 2);
           await fs.promises.writeFile(this.path, jsonData);
-
+  
           console.log(`Producto vendido. Stock disponible: ${one.stock}`);
           console.log(`Subtotal: ${subtotal}`);
           console.log(`IVA (${this.#ivaRate * 100}%): ${ivaAmount}`);
           console.log(`Total: ${totalAmount}`);
-
+  
           return one.stock;
         } else {
-          console.log("No hay suficiente stock en el evento.");
+          return "No hay suficiente stock en el evento.";
         }
+      } else {
+        return "No hay ningún evento con id=" + eid;
       }
     } catch (error) {
       console.log(error.message);
+      throw error;
     }
-  }
-}
+  }}
 
 const events = new EventsManager("./src/data/fs/files/events.json");
 export default events;
