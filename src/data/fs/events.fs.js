@@ -26,7 +26,7 @@ class EventsManager {
 
   async createEvent(data) {
     try {
-        if (!data.nombre || data.nombre.trim() === '') {
+        if (!data.nombre || data.nombre.trim() === '') { 
             throw new Error("El nombre es requerido");
         }
 
@@ -98,7 +98,7 @@ class EventsManager {
     }
   }
 
-  async productSold(quantity, eid) {
+  async soldticket(quantity, eid) {
     try {
       const one = this.readEventById(eid);
       if (one) {
@@ -127,7 +127,8 @@ class EventsManager {
       console.log(error.message);
       throw error;
     }
-  }}
+  }
+}
 
 const events = new EventsManager("./src/data/fs/files/events.json");
 export default events;

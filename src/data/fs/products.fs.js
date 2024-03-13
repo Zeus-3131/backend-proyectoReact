@@ -30,21 +30,20 @@ class ProductsManager {
         throw new Error("El nombre del producto es requerido");
       }
 
-        const  product = {
-            id: crypto.randomBytes(12).toString("hex"),
-            nombre: data.nombre,
-            imagen: data.imagen || "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-            precio: data.precio || 300000,
-            stock: data.stock || 50,
-            idcat: crypto.randomBytes(12).toString("hex"),
-            date: data.date || new Date(),
-        };
+      const product = {
+        id: crypto.randomBytes(12).toString("hex"),
+        nombre: data.nombre,
+        imagen: data.imagen || "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+        precio: data.precio || 300000,
+        stock: data.stock || 50,
+        idcat: crypto.randomBytes(12).toString("hex"),
+        date: data.date || new Date(),
+      };
 
-        
       this.products.push(product);
       const jsonData = JSON.stringify(this.products, null, 2);
       await fs.promises.writeFile(this.path, jsonData);
-  
+
       console.log("Producto creado con id: " + product.id);
       return product.id;
     } catch (error) {
@@ -52,7 +51,7 @@ class ProductsManager {
     }
   }
 
-  readProducts() {
+  readProducts() { 
     try {
       if (this.products.length === 0) {
         throw new Error("¡No hay productos!");
@@ -105,18 +104,18 @@ class ProductsManager {
       if (product) {
         if (product.stock >= quantity) {
           product.stock = product.stock - quantity;
-          const subtotal = product.price * quantity;
+          const subtotal = product.precio * quantity;
           const ivaAmount = subtotal * this.#ivaRate;
           const totalAmount = subtotal + ivaAmount;
-  
+
           const jsonData = JSON.stringify(this.products, null, 2);
           await fs.promises.writeFile(this.path, jsonData);
-  
+
           console.log(`Producto vendido. Stock disponible: ${product.stock}`);
           console.log(`Subtotal: ${subtotal}`);
           console.log(`IVA (${this.#ivaRate * 100}%): ${ivaAmount}`);
           console.log(`Total: ${totalAmount}`);
-  
+
           return product.stock;
         } else {
           return "No hay suficiente stock del producto.";
@@ -128,7 +127,8 @@ class ProductsManager {
       console.log(error.message);
       throw error;
     }
-  }}
+  }
+}
 
 const products = new ProductsManager("./src/data/fs/files/products.json");
 export default products;

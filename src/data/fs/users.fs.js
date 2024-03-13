@@ -57,7 +57,6 @@ class UsersManager {
     }
 }
 
-
   readUsers() {
     try {
       if (this.users.length === 0) {
@@ -87,7 +86,7 @@ class UsersManager {
     }
   }
 
-  async updateUser(eid, userId, updatedData) {
+  async updateUser(userId, updatedData) {
     try {
       const userIndex = this.users.findIndex((user) => user.id === userId);
   
