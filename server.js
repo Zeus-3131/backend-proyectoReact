@@ -1,4 +1,5 @@
 import express from "express"
+import { engine } from "express-handlebars";
 import router from "./src/routers/index.router.js"
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
@@ -18,3 +19,13 @@ server.use(morgan("dev"))
 server.use("/",router)
 server.use(errorHandler)
 server.use(pathHandler)
+
+//templates
+server.engine("handlebars",engine())
+server.set("view engine", "handlebars")
+server.set("views", __dirname+"/src/views")
+
+//routers
+server.use("/", router);
+server.use(errorHandler);
+server.use(pathHandler);

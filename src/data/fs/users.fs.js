@@ -5,6 +5,7 @@ class UsersManager {
   constructor(path) {
     this.path = path;
     this.users = [];
+    this.Photouser = "../../../public/user.png"; // Ruta de la imagen predeterminada
     this.init();
   }
 
@@ -24,38 +25,40 @@ class UsersManager {
 
   async createUser(data) {
     try {
-        const { username, email, password } = data;
+      const { username, email, password, photo } = data;
 
-        if (!username || !email || !password) {
-            throw new Error("Los campos 'username', 'email' y 'password' son obligatorios");
-        }
+      if (!username || !email || !password) {
+        throw new Error("Los campos 'username', 'email' y 'password' son obligatorios");
+      }
 
-        const trimmedUsername = username.trim();
-        const trimmedEmail = email.trim();
-        const trimmedPassword = password.trim();
+      const trimmedUsername = username.trim();
+      const trimmedEmail = email.trim();
+      const trimmedPassword = password.trim();
+      const userPhoto = photo || this.Photouser; // Utiliza la foto proporcionada o la predeterminada
 
-        if (trimmedUsername === '' || trimmedEmail === '' || trimmedPassword === '') {
-            throw new Error("Los campos 'username', 'email' y 'password' no pueden estar vacíos");
-        }
+      if (trimmedUsername === '' || trimmedEmail === '' || trimmedPassword === '') {
+        throw new Error("Los campos 'username', 'email' y 'password' no pueden estar vacíos");
+      }
 
-        const user = {
-            id: crypto.randomBytes(12).toString("hex"),
-            username: trimmedUsername,
-            email: trimmedEmail,
-            password: trimmedPassword,
-            role: data.role || "user",
-        };
+      const user = {
+        id: crypto.randomBytes(12).toString("hex"),
+        photo: userPhoto,
+        username: trimmedUsername,
+        email: trimmedEmail,
+        password: trimmedPassword,
+        role: data.role || "user",
+      };
 
-        this.users.push(user);
-        const jsonData = JSON.stringify(this.users, null, 2);
-        await fs.promises.writeFile(this.path, jsonData);
+      this.users.push(user);
+      const jsonData = JSON.stringify(this.users, null, 2);
+      await fs.promises.writeFile(this.path, jsonData);
 
-        console.log("Usuario creado con id: " + user.id);
-        return user.id;
+      console.log("Usuario creado con id: " + user.id);
+      return user.id;
     } catch (error) {
-        throw error;
+      throw error;
     }
-}
+  }
 
   readUsers() {
     try {
