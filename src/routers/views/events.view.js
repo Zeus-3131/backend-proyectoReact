@@ -1,22 +1,14 @@
-import {Router} from "express"
-import events from "../../data/fs/events.fs.js"
+import { Router } from "express";
+import events from "../../data/fs/events.fs.js";
 
-const eventsRouter = Router()
+const eventsRouter = Router();
 
-eventsRouter.get("/", async(req, res, next)=> {
+eventsRouter.get("/real", (req, res, next) => {
   try {
-    const all = await events.readEvents()
-    return res.render("events", { events: all })
+    return res.render("real", { title: "REAL" });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
-eventsRouter.get("/new",(req,res,next)=>{
-  try {
-    return res.render("new")
-  } catch (error) {
-    next(error)
-  }
-})
+});
 
-export default eventsRouter
+export default eventsRouter;
