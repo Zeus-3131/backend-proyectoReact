@@ -1,15 +1,22 @@
-import express from "express"
+import express from "express";
+import { createServer } from "http";
+import { Server } from "socket.io";
+import morgan from "morgan";
 import { engine } from "express-handlebars";
-import router from "./src/routers/index.router.js"
-import errorHandler from "./src/middlewares/errorHandler.mid.js";
+import socketUtils from "./src/utils/socket.utils.js";
+import router from "./src/routers/index.router.js";
+import errorHandler from "./src/middlewares/errorHandler.mid.js"; 
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
-import morgan from "morgan";
 
-const server = express()
-const PORT = 8080
-const ready = ()=>console.log("server ready on port "+PORT);
-server.listen(PORT,ready)
+//server
+const server = express();
+const PORT = 8080;
+const ready = console.log("server ready on port " + PORT);
+const httpServer = createServer(server);
+export const socketServer = new Server(httpServer);
+httpServer.listen(PORT, ready);
+socketServer.on("connection", socketUtils);
 
 //middlewares
 server.use(express.json())
