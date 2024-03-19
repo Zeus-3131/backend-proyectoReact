@@ -1,149 +1,20 @@
 [
   {
-    "id": "2d2c8c4ef5a3f2b289048d0b",
+    "id": "5b40cbfe6a5041ace64f9979",
+    "nombre": "Juan",
     "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 8888,
-    "stock": 50,
-    "idcat": "cda1455586e6b7fb8ef6cd20",
-    "date": "2024-03-06T23:17:02.986Z"
-  },
-  {
-    "id": "6e74224fd791cd9a17ab01c2",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 8888,
-    "stock": 50,
-    "idcat": "21de03b66e3ef96c7f9f7f10",
-    "date": "2024-03-06T23:17:39.450Z"
-  },
-  {
-    "id": "e4f7440a20d2ed770f10a980",
-    "nombre": "prueba",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 8888,
-    "stock": 50,
-    "idcat": "5099aa43f9eb1302c1d249b4",
-    "date": "2024-03-06T23:18:47.858Z"
-  },
-  {
-    "id": "19d677051f5c5bdca916a263",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "f7feacfecf52f49ccf92c0ac",
-    "date": "2024-03-06T23:19:26.046Z"
-  },
-  {
-    "id": "7737f4c868fc72f4b5910a32",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "32aee4c83aec35b9418465d3",
-    "date": "2024-03-06T23:19:34.498Z"
-  },
-  {
-    "id": "0e534e281765e1284c07fc79",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "8c7f68e5c36356bc01af3715",
-    "date": "2024-03-06T23:20:03.086Z"
-  },
-  {
-    "id": "831877cb0b377cc6bb432312",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "d75a0c02ac3daa3811992c14",
-    "date": "2024-03-06T23:38:08.923Z"
-  },
-  {
-    "id": "34c2239f3027dab62294d442",
-    "nombre": "prueba24",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": "0",
-    "stock": 50,
-    "idcat": "855b166766c415a32ed8c9c5",
-    "date": "2024-03-06T23:39:09.639Z"
-  },
-  {
-    "id": "0fb8d517e4e733e4e4b76b4d",
-    "nombre": "prue",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "8f2d81a40663b0a9873a57af",
-    "date": "2024-03-07T00:03:29.844Z"
-  },
-  {
-    "id": "c240e544eefaea24c7e2fa61",
-    "nombre": "prue",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "4b23112a5214f3128550db62",
-    "date": "2024-03-07T00:08:01.260Z"
-  },
-  {
-    "id": "4aa9ee90dfe6296c307e7289",
-    "nombre": "prueba24",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": "4566",
-    "stock": 50,
-    "idcat": "7f4f8292e8904e591166afc3",
-    "date": "2024-03-07T00:23:47.585Z"
-  },
-  {
-    "id": "6f083ad9c2ca47358c4652fa",
-    "nombre": "exilon",
-    "imagen": "exilon",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "0de1bd626abfebd24e20182a",
-    "date": "2024-03-07T01:06:16.297Z"
-  },
-  {
-    "id": "ba967f0f26e325defff538e7",
-    "nombre": "exilon",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "fa68b9a451a46565677b5d9f",
-    "date": "2024-03-07T01:15:42.677Z"
-  },
-  {
-    "id": "0d54f0352ba1d507884323d3",
-    "nombre": "preuba de esto",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": "3737373",
-    "stock": 10,
-    "idcat": "b29d7c9ab77349c951970494",
-    "date": "2024-03-11T19:03:41.387Z"
-  },
-  {
-    "id": "9c9ca108890ff88845a5cb13",
-    "nombre": "preuba de esto",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": "3737373",
-    "stock": 50,
-    "idcat": "90c228f9295051915aac4877",
-    "date": "2024-03-11T21:07:41.256Z"
-  },
-  {
-    "id": "f549c6667019674c303c16ee",
-    "nombre": "nike",
-    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
-    "precio": 300000,
-    "stock": 50,
-    "idcat": "183a704470814d1f9f580139",
-    "date": "2024-03-18T18:17:30.647Z"
-  },
-  {
-    "id": "a852add9888b2d15abcd721f",
-    "nombre": "nike 2",
-    "imagen": "data:image/jpeg;base64,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",
-    "precio": "5000000",
+    "precio": "3",
     "stock": "1",
-    "idcat": "c434ccfdcbc0dfbcdf4d4657",
-    "date": "2024-03-18"
+    "idcat": "7b031ae2d5dc61b2fc38c7cf",
+    "date": "2024-03-19"
+  },
+  {
+    "id": "fce8bfc716bdbb0651d7b53a",
+    "nombre": "nueva prueba",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "3737373",
+    "stock": 50,
+    "idcat": "15ea871cd088eecc0d5d6768",
+    "date": "2024-03-19T18:54:57.741Z"
   }
 ]
