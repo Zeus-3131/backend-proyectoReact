@@ -1,13 +1,13 @@
 import { Router } from "express";
 import usersRouter from "./users.router.api.js";
-import eventsRouter from "./events.router.api.js";
+// import eventsRouter from "./events.router.api.js";
 import productsRouter from "./products.router.api.js"
 
 const apiRouter = Router()
 
 //definir los enrutadores de los recursos
 apiRouter.use("/users",usersRouter)
-apiRouter.use("/events",eventsRouter)
+// apiRouter.use("/events",eventsRouter)
 apiRouter.use("/products",productsRouter)
 
 

@@ -4,7 +4,7 @@ export default (req,res,next)=>{
     if (role==="admin") {
       return next()
     } else {
-      const error = new Error("forbidden")
+      const error = new Error("Prohibido")
       error.statusCode = 403
       throw error
     }

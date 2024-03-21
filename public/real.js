@@ -2,7 +2,7 @@ console.log("socket");
 
 const socket = io();
 
-socket.on("events", (data) => {
+socket.on("products", (data) => {
   const template = data
     .map(
       (each) => `
@@ -13,10 +13,10 @@ socket.on("events", (data) => {
     `
     )
     .join("");
-  document.querySelector("#events").innerHTML = template;
+  document.querySelector("#products").innerHTML = template;
 });
 
-document.querySelector("#newEvent").addEventListener("click", (event) => {
+document.querySelector("#newProduct").addEventListener("click", (event) => {
   event.preventDefault();
   const nombre = document.querySelector("#nombre").value;
   const imagen = document.querySelector("#imagen").value;
@@ -32,5 +32,5 @@ document.querySelector("#newEvent").addEventListener("click", (event) => {
   // idcat && (data.idcat = idcat);
   date && (data.date = date);
   //console.log(data);
-  socket.emit("newEvent", data);
+  socket.emit("newProduct", data);
 });

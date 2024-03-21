@@ -1,6 +1,6 @@
-// import { model } from "mongoose";
+import { model } from "mongoose";
 import User from "./models/user.model.js";
-import Event from "./models/event.model.js";
+import Product from "./models/product.model.js";
 
 class MongoManager {
   constructor(model) {
@@ -20,7 +20,7 @@ class MongoManager {
     try {
       const all = await this.model.find();
       if (all.length === 0) {
-        const error = new Error("There aren't events");
+        const error = new Error("No hay eventos");
         error.statusCode = 404;
         throw error;
       }
@@ -34,7 +34,7 @@ class MongoManager {
     try {
       const one = await this.model.findById(id);
       if (!one) {
-        const error = new Error("There isn't event");
+        const error = new Error("No existe el evento");
         error.statusCode = 404;
         throw error;
       }
@@ -49,7 +49,7 @@ class MongoManager {
       const opt = { new: true };
       const one = await this.model.findByIdAndUpdate(id, data, opt);
       if (!one) {
-        const error = new Error("There isn't event");
+        const error = new Error("No existe el evento");
         error.statusCode = 404;
         throw error;
       }
@@ -63,7 +63,7 @@ class MongoManager {
     try {
       const one = await this.model.findByIdAndDelete(id);
       if (!one) {
-        const error = new Error("There isn't event");
+        const error = new Error("No existe el evento");
         error.statusCode = 404;
         throw error;
       }
@@ -75,6 +75,6 @@ class MongoManager {
 }
 
 const users = new MongoManager(User);
-const eventsManager = new MongoManager(Event);
+const productsManager = new MongoManager(Product);
 
-export { users, eventsManager };
+export { users, productsManager };

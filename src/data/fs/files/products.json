@@ -7,5 +7,23 @@
     "stock": 20,
     "idcat": "0d75d5c7ac85934cbab2d87f",
     "date": "2024-03-11T21:08:26.924Z"
+  },
+  {
+    "id": "340ea9650b198e3dea07d489",
+    "nombre": "pepito",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "1",
+    "stock": "1",
+    "idcat": "514295123246127b400b6563",
+    "date": "2024-03-19T22:17:59.801Z"
+  },
+  {
+    "id": "379c8aa504a5fbddcb3e27fc",
+    "nombre": "Jonathan",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "1",
+    "stock": "1",
+    "idcat": "8d033c41ef9df29471cbff7a",
+    "date": "2024-03-19T22:25:12.177Z"
   }
 ]
