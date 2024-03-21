@@ -1,8 +1,9 @@
+// Clase para gestionar los productos
 import fs from "fs";
 import crypto from "crypto";
 
 class ProductsManager {
-  #ivaRate = 0.19; // Variable para el IVA en Colombia
+  #ivaRate = 0.19; // Tasa de IVA en Colombia
 
   init() {
     try {
@@ -31,7 +32,7 @@ class ProductsManager {
       }
 
       const product = {
-        id: crypto.randomBytes(12).toString("hex"),
+        id: crypto.randomBytes(12).toString("hex"), 
         nombre: data.nombre,
         imagen: data.imagen || "https://i.postimg.cc/HxdvTwqJ/events.jpg",
         precio: data.precio || 300000,
@@ -130,5 +131,5 @@ class ProductsManager {
   }
 }
 
-const products = new ProductsManager("./src/data/fs/files/products.json");
-export default products;
+const productsManager = new ProductsManager("./src/data/fs/files/products.json");
+export default productsManager;
