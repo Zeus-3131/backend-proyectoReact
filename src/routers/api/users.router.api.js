@@ -1,6 +1,6 @@
 import { Router } from "express";
 // import users from "../../data/fs/users.fs.js";
-import { users } from "../../data/mongo/manager.mongo.js"; 
+import { usersManager } from "../../data/mongo/manager.mongo.js"; 
 
 
 const usersRouter = Router();
@@ -8,7 +8,7 @@ const usersRouter = Router();
 usersRouter.post("/", async (req, res, next) => {
   try {
     const data = req.body; 
-    const response = await users.create(data);
+    const response = await usersManager.create(data);
     return res.json({
       statusCode: 201,
       response,
@@ -20,7 +20,7 @@ usersRouter.post("/", async (req, res, next) => {
 
 usersRouter.get("/", async (req, res, next) => {
   try {
-    const all = await users.read();
+    const all = await usersManager.read();
     return res.json({
       statusCode: 200,
       response: all,
@@ -33,7 +33,7 @@ usersRouter.get("/", async (req, res, next) => {
 usersRouter.get("/:uid", async (req, res, next) => {
   try {
     const { uid } = req.params;
-    const one = await users.readOne(uid);
+    const one = await usersManager.readOne(uid);
     return res.json({
       statusCode: 200,
       response: one,
@@ -47,7 +47,7 @@ usersRouter.put("/:uid", async(req,res,next)=>{
   try {
     const { uid } = req.params;
     const updatedData = req.body;
-    const response = await users.update(uid, updatedData);
+    const response = await usersManager.update(uid, updatedData);
     return res.json({
       statusCode: 200,
       response,
@@ -60,7 +60,7 @@ usersRouter.put("/:uid", async(req,res,next)=>{
 usersRouter.delete("/:uid", async (req, res, next) => {
   try {
     const { uid } = req.params;
-    const response = await users.destroy(uid);
+    const response = await usersManager.destroy(uid);
     return res.json({
       statusCode: 200,
       response,

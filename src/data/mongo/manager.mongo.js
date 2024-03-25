@@ -1,4 +1,3 @@
-import { model } from "mongoose";
 import User from "./models/user.model.js";
 import Product from "./models/product.model.js";
 
@@ -74,7 +73,7 @@ class MongoManager {
   }
 }
 
-const users = new MongoManager(User);
+const usersManager = new MongoManager(User);
 const productsManager = new MongoManager(Product);
 
-export { users, productsManager };
+export { usersManager, productsManager };
