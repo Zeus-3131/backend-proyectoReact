@@ -3,6 +3,7 @@ import { productsManager } from "../../data/mongo/manager.mongo.js";
 import propsProducts from "../../middlewares/propsProducts.mid.js";
 import isAdmin from "../../middlewares/isAdmin.mid.js";
 import isCapacityOkMid from "../../middlewares/isCapacityOk.mid.js";
+import Product from "../../data/mongo/models/product.model.js";
 
 const productsRouter = Router();
 
@@ -21,7 +22,19 @@ productsRouter.post("/", isAdmin, propsProducts, async (req, res, next) => {
 
 productsRouter.get("/", async (req, res, next) => {
   try {
-    const all = await productsManager.read();
+    const options = {
+      limit: req.query.limit || 20,
+      page: req.query.page || 1,
+      sort: { name: 1 },
+    };
+    const filter = {};
+    if (req.query.name) {
+      filter.name = new RegExp(req.query.name.trim(), "i");
+    }
+    if (req.query.sort === "desc") {
+      options.sort.name = "desc";
+    }
+    const all = await productsManager.read({ filter, options });
     return res.status(200).json({
       statusCode: 200,
       response: all,
@@ -50,49 +63,14 @@ productsRouter.get("/:pid", async (req, res, next) => {
   }
 });
 
-productsRouter.put("/:pid/:quantity", isCapacityOkMid, async (req, res, next) => {
+productsRouter.put("/:pid", isCapacityOkMid, async (req, res, next) => {
   try {
-    const { pid, quantity } = req.params;
-    const product = await productsManager.readOne(pid);
-    if (!product) {
-      return res.status(404).json({
-        statusCode: 404,
-        message: "Product not found",
-      });
-    }
-
-    // Actualizar campos adicionales si se proporcionan en el cuerpo de la solicitud
-    const updatedFields = req.body;
-    let updatedStock = product.stock;
-    if ('stock' in updatedFields) {
-      // Actualizar el stock solo si se proporciona en el cuerpo de la solicitud
-      updatedStock = parseInt(updatedFields.stock);
-    }
-
-    // Actualizar otros campos si se proporcionan en el cuerpo de la solicitud
-    delete updatedFields.stock; // Eliminar el campo de stock ya que ya se actualizó anteriormente
-    if (Object.keys(updatedFields).length > 0) {
-      Object.assign(product, updatedFields);
-    }
-
-    // Verificar si hay suficiente stock después de la actualización
-    const updatedStockValue = updatedStock - parseInt(quantity);
-    if (updatedStockValue < 0) {
-      return res.status(400).json({
-        statusCode: 400,
-        message: "Insufficient stock",
-      });
-    }
-
-    // Actualizar el documento del producto en la base de datos
-    const response = await productsManager.update(pid, {
-      ...updatedFields,
-      stock: updatedStockValue
-    });
-
+    const { pid } = req.params;
+    const data = req.body;
+    const response = await productsManager.update(pid, data);
     return res.status(200).json({
       statusCode: 200,
-      response: "Capacity available: " + response,
+      response,
     });
   } catch (error) {
     return next(error);

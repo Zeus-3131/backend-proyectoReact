@@ -2,6 +2,7 @@ import User from "./models/user.model.js";
 import Product from "./models/product.model.js";
 import Order from "./models/order.model.js";
 import notFoundOne from "../../utils/notFoundOne.utils.js";
+import { Types } from "mongoose";
 
 class MongoManager {
   constructor(model) {
@@ -11,15 +12,15 @@ class MongoManager {
   async create(data) {
     try {
       const one = await this.model.create(data);
-      return one._id;
+      return one;
     } catch (error) {
       throw error;
     }
   }
 
-  async read() {
+  async read({ filter, options }) {
     try {
-      const all = await this.model.find().populate("user_id").populate("product_id");
+      const all = await this.model.find(filter, null, options).populate("idcat");
       notFoundOne(all);
       return all;
     } catch (error) {
@@ -29,7 +30,7 @@ class MongoManager {
 
   async readOne(id) {
     try {
-      const one = await this.model.findById(id).populate("user_id").populate("product_id");
+      const one = await this.model.findById(id).populate("idcat");
       notFoundOne(one);
       return one;
     } catch (error) {
@@ -40,7 +41,7 @@ class MongoManager {
   async update(id, data) {
     try {
       const opt = { new: true };
-      const one = await this.model.findByIdAndUpdate(id, data, opt).populate("user_id").populate("product_id");
+      const one = await this.model.findByIdAndUpdate(id, data, opt).populate("idcat");
       notFoundOne(one);
       return one;
     } catch (error) {
@@ -50,7 +51,7 @@ class MongoManager {
 
   async destroy(id) {
     try {
-      const one = await this.model.findByIdAndDelete(id).populate("user_id").populate("product_id");
+      const one = await this.model.findByIdAndDelete(id).populate("idcat");
       notFoundOne(one);
       return one;
     } catch (error) {
@@ -60,11 +61,10 @@ class MongoManager {
 
   async stats({ filter }) {
     try {
-      let stats = await this.model.find(filter).explain("executionStats");
-      stats = {
-        quantity: stats.executionStats.nReturned,
-        time: stats.executionStats.executionTimeMillis,
-      };
+      const stats = await this.model.aggregate([
+        { $match: filter },
+        { $group: { _id: null, total: { $sum: 1 } } }
+      ]);
       return stats;
     } catch (error) {
       throw error;

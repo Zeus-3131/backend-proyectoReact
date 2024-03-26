@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import crypto from "crypto";
+import crypto from "crypto"; 
 
 const collection = "products";
 const schema = new Schema(
@@ -10,7 +10,7 @@ const schema = new Schema(
       default: "https://i.postimg.cc/wTgNFWhR/profile.png",
     },
     precio: { type: Number, default: 300000 },
-    stock: { type: Number, default: 50 },
+    stock: { type: Number, default: 50 }, 
     idcat: { type: String, default: crypto.randomBytes(12).toString("hex") },
     date: { type: Date, default: new Date() },
   },
