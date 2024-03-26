@@ -1,13 +1,12 @@
 import { Router } from "express";
-// import users from "../../data/fs/users.fs.js";
-import { usersManager } from "../../data/mongo/manager.mongo.js"; 
-
+import { usersManager } from "../../data/mongo/manager.mongo.js";
+import User from "../../data/mongo/models/user.model.js";
 
 const usersRouter = Router();
- 
+
 usersRouter.post("/", async (req, res, next) => {
   try {
-    const data = req.body; 
+    const data = req.body;
     const response = await usersManager.create(data);
     return res.json({
       statusCode: 201,
@@ -20,7 +19,19 @@ usersRouter.post("/", async (req, res, next) => {
 
 usersRouter.get("/", async (req, res, next) => {
   try {
-    const all = await usersManager.read();
+    const options = {
+      limit: req.query.limit || 20,
+      page: req.query.page || 1,
+      sort: { email: 1 },
+    };
+    const filter = {};
+    if (req.query.email) {
+      filter.email = new RegExp(req.query.email.trim(), "i");
+    }
+    if (req.query.sort === "desc") {
+      options.sort.email = "desc";
+    }
+    const all = await User.paginate(filter, options);
     return res.json({
       statusCode: 200,
       response: all,
@@ -43,7 +54,7 @@ usersRouter.get("/:uid", async (req, res, next) => {
   }
 });
 
-usersRouter.put("/:uid", async(req,res,next)=>{
+usersRouter.put("/:uid", async (req, res, next) => {
   try {
     const { uid } = req.params;
     const updatedData = req.body;
@@ -64,6 +75,18 @@ usersRouter.delete("/:uid", async (req, res, next) => {
     return res.json({
       statusCode: 200,
       response,
+    });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+usersRouter.get("/stats", async (req, res, next) => {
+  try {
+    const all = await usersManager.stats({});
+    return res.json({
+      statusCode: 200,
+      response: all,
     });
   } catch (error) {
     return next(error);
