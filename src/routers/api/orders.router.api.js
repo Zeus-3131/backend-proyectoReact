@@ -55,7 +55,7 @@ router.put("/:oid", async (req, res, next) => {
     if (!order) {
       return res.status(404).json({
         statusCode: 404,
-        message: "Order not found",
+        message: "Orden no encontrada",
       });
     }
 
@@ -69,6 +69,8 @@ router.put("/:oid", async (req, res, next) => {
     return next(error);
   }
 });
+
+
 
 router.delete("/:oid", async (req, res, next) => {
   try {
