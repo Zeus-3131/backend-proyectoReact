@@ -70,8 +70,6 @@ router.put("/:oid", async (req, res, next) => {
   }
 });
 
-
-
 router.delete("/:oid", async (req, res, next) => {
   try {
     const { oid } = req.params;
@@ -79,6 +77,20 @@ router.delete("/:oid", async (req, res, next) => {
     return res.status(200).json({
       statusCode: 200,
       response,
+    });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+// Método para obtener el reporte de facturación
+router.get("/bills/:uid", async (req, res, next) => {
+  try {
+    const { uid } = req.params;
+    const report = await orderManager.reportBill(uid);
+    return res.status(200).json({
+      statusCode: 200,
+      response: report,
     });
   } catch (error) {
     return next(error);

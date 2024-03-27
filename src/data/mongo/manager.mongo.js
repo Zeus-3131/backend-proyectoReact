@@ -70,6 +70,33 @@ class MongoManager {
       throw error;
     }
   }
+
+  async reportBill(uid) {
+    try {
+      const report = await this.model.aggregate([
+        { $match: { user_id: new Types.ObjectId(uid) } },
+        {
+          $lookup: {
+            from: "products",
+            localField: "product_id",
+            foreignField: "_id",
+            as: "product",
+          },
+        },
+        {
+          $set: {
+            subtotal: { $multiply: ["$quantity", { $arrayElemAt: ["$product.precio", 0] }] },
+          },
+        },
+        { $group: { _id: "$user_id", total: { $sum: "$subtotal" } } },
+        { $project: { _id: 0, user_id: "$_id", total: "$total", date: new Date() } },
+      ]);
+
+      return report;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 const usersManager = new MongoManager(User);
@@ -77,3 +104,4 @@ const productsManager = new MongoManager(Product);
 const orderManager = new MongoManager(Order);
 
 export { usersManager, productsManager, orderManager };
+export default MongoManager;
