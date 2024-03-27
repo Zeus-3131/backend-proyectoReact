@@ -1,6 +1,8 @@
 import { Router } from "express";
 import productsRouter from "./products.view.js";
 import usersRouter from "./users.view.js"
+import sessionsRouter from "./sessions.view.js"
+
 
 const viewsRouter = Router();
 
@@ -15,5 +17,7 @@ viewsRouter.get("/", (req, res, next) => {
 });
 viewsRouter.use("/products", productsRouter);
 viewsRouter.use("/users", usersRouter)
+viewsRouter.use("/sessions", sessionsRouter)
+
 
 export default viewsRouter;
