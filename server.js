@@ -12,6 +12,8 @@ import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
+import sessionFileStore from "session-file-store";
+import MongoStore from "connect-mongo";
 
 //server
 const server = express();
@@ -25,14 +27,42 @@ export const socketServer = new Server(httpServer);
 httpServer.listen(PORT, ready);
 socketServer.on("connection", socketUtils);
 
+
+const FileStore = sessionFileStore(expressSession);
 //middlewares
-server.use(cookieParser(process.env.SECRET_KEY));
-server.use(
+server.use(cookieParser(process.env.SECRET_KEY)); 
+//MEMORY STORE
+/* server.use(
   expressSession({
     secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 60000 },
+  })
+); */
+//FILE STORE
+/* server.use(
+  expressSession({
+    secret: process.env.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+    store: new FileStore({
+      path: "./src/data/fs/files/sessions",
+      ttl: 10,
+      retries: 2,
+    }),
+  })
+); */
+//MONGO STORE
+server.use(
+  expressSession({
+    secret: process.env.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({
+      ttl: 7 * 24 * 60 * 60, //chequear la unidad de ttl
+      mongoUrl: process.env.DB_LINK,
+    }),
   })
 );
 server.use(express.json())
