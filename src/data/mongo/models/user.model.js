@@ -10,6 +10,7 @@ const schema = new Schema(
       default: "https://i.postimg.cc/wTgNFWhR/profile.png",
     },
     username: { type: String, required: true },
+    lastName: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, default: "user" },

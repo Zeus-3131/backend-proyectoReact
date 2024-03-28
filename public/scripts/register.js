@@ -4,7 +4,7 @@ selector.addEventListener("click", async () => {
     const data = {
       email: document.querySelector("#email").value,
       password: document.querySelector("#password").value,
-      name: document.querySelector("#name").value,
+      username: document.querySelector("#username").value,
     };
     document.querySelector("#lastName").value &&
       (data.lastName = document.querySelector("#lastName").value);

@@ -2,15 +2,15 @@ const selector = document.querySelector("#create");
 selector.addEventListener("click", async () => {
   try {
     const data = {
-      title: document.querySelector("#title").value,
-      place: document.querySelector("#place").value,
+      nombre: document.querySelector("#nombre").value,
+      idcat: document.querySelector("#idcat").value,
     };
-    document.querySelector("#poster").value &&
-      (data.poster = document.querySelector("#poster").value);
-    document.querySelector("#price").value &&
-      (data.price = document.querySelector("#price").value);
-    document.querySelector("#capacity").value &&
-      (data.capacity = document.querySelector("#capacity").value);
+    document.querySelector("#imagen").value &&
+      (data.imagen = document.querySelector("#imagen").value);
+    document.querySelector("#precio").value &&
+      (data.precio = document.querySelector("#precio").value);
+    document.querySelector("#stock").value &&
+      (data.stock = document.querySelector("#stock").value);
     document.querySelector("#date").value &&
       (data.date = document.querySelector("#date").value);
     const opts = {
@@ -18,7 +18,7 @@ selector.addEventListener("click", async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    let response = await fetch("/api/events", opts);
+    let response = await fetch("/api/products", opts);
     response = await response.json();
     response.statusCode === 201
       ? alert("Event created!")

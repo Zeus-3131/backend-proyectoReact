@@ -1,4 +1,4 @@
-function propsEventsUtils(data) { 
+function propsProductsUtils(data) { 
     const { nombre } = data;
     if (!nombre) {
       const error = new Error("El nombre es requerido");
@@ -7,4 +7,4 @@ function propsEventsUtils(data) {
     }
 }
 
-export default propsEventsUtils;
+export default propsProductsUtils;
