@@ -1,14 +1,17 @@
-export default (req,res,next)=>{
+import { verifytoken } from "../utils/token.util.js";
+
+export default (req, res, next) => {
   try {
-    const { role } = req.session;
-    if (role==="admin") {
-      return next()
+    const data = verifytoken(req.headers)
+    const { role } = data;
+    if (role === 1) {
+      return next();
     } else {
-      const error = new Error("Prohibido")
-      error.statusCode = 403
-      throw error
+      const error = new Error("Prohibido");
+      error.statusCode = 403;
+      throw error; 
     }
   } catch (error) {
-    return next(error)
+    return next(error);
   }
-}
+};

@@ -6,7 +6,7 @@ import isCapacityOkMid from "../../middlewares/isCapacityOk.mid.js";
 import Product from "../../data/mongo/models/product.model.js";
 
 const productsRouter = Router();
-
+ 
 productsRouter.post("/", isAdmin, propsProducts, async (req, res, next) => {
   try {
     const data = req.body;
