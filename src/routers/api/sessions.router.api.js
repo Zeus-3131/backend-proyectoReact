@@ -12,7 +12,11 @@ sessionsRouter.post(
     session: false,
     failureRedirect: "/api/sessions/badauth",
   }),
+<<<<<<< HEAD
   async (req, res, next) => { 
+=======
+  async (req, res, next) => {
+>>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
     try {
       return res.json({
         statusCode: 201,
@@ -36,6 +40,7 @@ sessionsRouter.post(
       return res.json({
         statusCode: 200,
         message: "Logged in!",
+<<<<<<< HEAD
         session: req.token,
       });
     } catch (error) {
@@ -94,6 +99,8 @@ sessionsRouter.get(
       return res.json({
         statusCode: 200,
         message: "Logged in with github!",
+=======
+>>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
         session: req.session,
       });
     } catch (error) {
