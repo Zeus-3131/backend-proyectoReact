@@ -4,7 +4,7 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";
+import { usersManager } from "../data/mongo/manager.mongo.js";  
 const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT } = process.env;
 
 passport.use(
@@ -36,8 +36,8 @@ passport.use(
       try {
         const user = await usersManager.readByEmail(email);
         if (user && verifyHash(password, user.password)) {
-          //req.session.email = email;
-          //req.session.role = user.role;
+          // req.session.email = email;
+          // req.session.role = user.role;
           const token = createToken({ email, role: user.role });
           req.token = token;
           return done(null, user);
@@ -50,6 +50,7 @@ passport.use(
     }
   )
 );
+
 passport.use(
   "google",
   new GoogleStrategy(
@@ -81,37 +82,38 @@ passport.use(
       }
     }
   )
-// );
-// passport.use(
-//   "github", 
-//   new GithubStrategy(
-//     {
-//       passReqToCallback: true,
-//       clientID: GITHUB_ID,
-//       clientSecret: GITHUB_CLIENT,
-//       callbackURL: "http://localhost:8080/api/sessions/github/callback",
-//     },
-//     async (req, accessToken, refreshToken, profile, done) => {
-//       try {
-//         console.log(profile);
-//         let user = await usersManager.readByEmail(profile.id + "@github.com");
-//         if (!user) {
-//           user = {
-//             email: profile.id + "@github.com",
-//             name: profile.username,
-//             photo: profile._json.avatar_url,
-//             password: createHash(profile.id),
-//           };
-//           user = await usersManager.create(user);
-//         }
-//         req.session.email = user.email;
-//         req.session.role = user.role;
-//         return done(null, user);
-//       } catch (error) {
-//         return done(error);
-//       }
-//     }
-//   )
+);
+
+passport.use(
+  "github",
+  new GithubStrategy(
+    {
+      passReqToCallback: true,
+      clientID: GITHUB_ID,
+      clientSecret: GITHUB_CLIENT,
+      callbackURL: "http://localhost:8080/api/sessions/github/callback",
+    },
+    async (req, accessToken, refreshToken, profile, done) => {
+      try {
+        console.log(profile);
+        let user = await usersManager.readByEmail(profile.id + "@github.com");
+        if (!user) {
+          user = {
+            email: profile.id + "@github.com",
+            name: profile.username,
+            photo: profile._json.avatar_url,
+            password: createHash(profile.id),
+          };
+          user = await usersManager.create(user);
+        }
+        req.session.email = user.email;
+        req.session.role = user.role;
+        return done(null, user);
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
 );
 
 export default passport;

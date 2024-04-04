@@ -13,7 +13,7 @@ socket.on("products", (data) => {
     `
     )
     .join("");
-  document.querySelector("#products").innerHTML = template;
+  document.querySelector("#products").innerHTML = template; 
 });
 
 document.querySelector("#newProduct").addEventListener("click", (event) => {

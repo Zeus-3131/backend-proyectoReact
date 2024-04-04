@@ -76,31 +76,31 @@ sessionsRouter.get(
   }
 );
 
-// //google
-// sessionsRouter.post(
-//   "/github",
-//   passport.authenticate("github", { scope: ["user:email"] })
-// );
+//google
+sessionsRouter.post(
+  "/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
 
-// //github-callback
-// sessionsRouter.get(
-//   "/github/callback",
-//   passport.authenticate("github", {
-//     session: false,
-//     failureRedirect: "/api/sessions/badauth",
-//   }),
-//   async (req, res, next) => {
-//     try {
-//       return res.json({
-//         statusCode: 200,
-//         message: "Logged in with github!",
-//         session: req.session,
-//       });
-//     } catch (error) {
-//       return next(error);
-//     }
-//   }
-// );
+//github-callback
+sessionsRouter.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    session: false,
+    failureRedirect: "/api/sessions/badauth",
+  }),
+  async (req, res, next) => {
+    try {
+      return res.json({
+        statusCode: 200,
+        message: "Logged in with github!",
+        session: req.session,
+      });
+    } catch (error) {
+      return next(error);
+    }
+  }
+);
 
 //me
 sessionsRouter.post("/", async (req, res, next) => {
