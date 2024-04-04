@@ -13,7 +13,11 @@ const schema = new Schema(
     lastName: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+<<<<<<< HEAD
     role: { type: Number, default: 0 },
+=======
+    role: { type: String, default: "user" },
+>>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
     age: { type: Number, default: 18 }
   },
   { timestamps: true }
