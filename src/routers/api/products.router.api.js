@@ -4,6 +4,7 @@ import propsProducts from "../../middlewares/propsProducts.mid.js";
 import isAdmin from "../../middlewares/isAdmin.mid.js";
 import isAuth from "../../middlewares/isAuth.mid.js";
 import isCapacityOkMid from "../../middlewares/isCapacityOk.mid.js"; 
+// jodase
 import Product from "../../data/mongo/models/product.model.js";
 
 const productsRouter = Router();
