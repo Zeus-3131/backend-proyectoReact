@@ -2,16 +2,12 @@ import { Router } from "express";
 import { productsManager } from "../../data/mongo/manager.mongo.js";
 import propsProducts from "../../middlewares/propsProducts.mid.js";
 import isAdmin from "../../middlewares/isAdmin.mid.js";
+import isAuth from "../../middlewares/isAuth.mid.js";
 import isCapacityOkMid from "../../middlewares/isCapacityOk.mid.js";
 import Product from "../../data/mongo/models/product.model.js";
 
 const productsRouter = Router();
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
-productsRouter.post("/", isAdmin, propsProducts, async (req, res, next) => {
+productsRouter.post("/",isAuth, isAdmin, propsProducts, async (req, res, next) => {
   try {
     const data = req.body;
     const response = await productsManager.create(data);

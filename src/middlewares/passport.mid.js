@@ -1,16 +1,11 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-<<<<<<< HEAD
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
 import { usersManager } from "../data/mongo/manager.mongo.js";  
 const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT } = process.env;
-=======
-import { createHash, verifyHash } from "../utils/hash.util.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
 
 passport.use(
   "register",
@@ -41,15 +36,11 @@ passport.use(
       try {
         const user = await usersManager.readByEmail(email);
         if (user && verifyHash(password, user.password)) {
-<<<<<<< HEAD
           // req.session.email = email;
           // req.session.role = user.role;
           const token = createToken({ email, role: user.role });
           req.token = token;
-=======
-          req.session.email = email;
-          req.session.role = user.role;
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
+
           return done(null, user);
         } else {
           return done(null, false);
@@ -61,7 +52,6 @@ passport.use(
   )
 );
 
-<<<<<<< HEAD
 passport.use(
   "google",
   new GoogleStrategy(
@@ -127,6 +117,4 @@ passport.use(
   )
 );
 
-=======
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
 export default passport;

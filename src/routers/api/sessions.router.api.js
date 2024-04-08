@@ -12,11 +12,8 @@ sessionsRouter.post(
     session: false,
     failureRedirect: "/api/sessions/badauth",
   }),
-<<<<<<< HEAD
+
   async (req, res, next) => { 
-=======
-  async (req, res, next) => {
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
     try {
       return res.json({
         statusCode: 201,
@@ -31,18 +28,18 @@ sessionsRouter.post(
 //login
 sessionsRouter.post(
   "/login",
-  passport.authenticate("login", {
-    session: false,
-    failureRedirect: "/api/sessions/badauth",
-  }),
+  passCallBack("login"),
   async (req, res, next) => {
     try {
-      return res.json({
-        statusCode: 200,
-        message: "Logged in!",
-<<<<<<< HEAD
-        session: req.token,
-      });
+      return res
+        .cookie("token", req.token, {
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          httpOnly: true,
+        })
+        .json({
+          statusCode: 200,
+          message: "Logged in!",
+        });
     } catch (error) {
       return next(error);
     }
@@ -99,8 +96,6 @@ sessionsRouter.get(
       return res.json({
         statusCode: 200,
         message: "Logged in with github!",
-=======
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
         session: req.session,
       });
     } catch (error) {
@@ -128,23 +123,25 @@ sessionsRouter.post("/", async (req, res, next) => {
 });
 
 //signout
-sessionsRouter.post("/signout", async (req, res, next) => {
-  try {
-    if (req.session.email) {
-      req.session.destroy();
-      return res.json({
+sessionsRouter.post(
+  "/signout",
+  /*   passport.authenticate("jwt", {
+    session: false,
+    failureRedirect: "/api/sessions/signout/cb",
+  }), */
+  passCallBack("jwt"),
+  async (req, res, next) => {
+    try {
+      return res.clearCookie("token").json({
         statusCode: 200,
         message: "Signed out!",
       });
-    } else {
-      const error = new Error("No Auth");
-      error.statusCode = 400;
-      throw error;
+    } catch (error) {
+      return next(error);
     }
-  } catch (error) {
-    return next(error);
   }
-});
+);
+
 
 //badauth
 sessionsRouter.get("/badauth", (req, res, next) => {
