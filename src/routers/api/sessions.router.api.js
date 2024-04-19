@@ -12,8 +12,15 @@ sessionsRouter.post(
     session: false,
     failureRedirect: "/api/sessions/badauth",
   }),
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
   async (req, res, next) => { 
+=======
+  async (req, res, next) => {
+>>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
     try {
       return res.json({
         statusCode: 201,
@@ -31,6 +38,7 @@ sessionsRouter.post(
   passCallBack("login"),
   async (req, res, next) => {
     try {
+<<<<<<< HEAD
       return res
         .cookie("token", req.token, {
           maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -40,6 +48,14 @@ sessionsRouter.post(
           statusCode: 200,
           message: "Logged in!",
         });
+=======
+      return res.json({
+        statusCode: 200,
+        message: "Logged in!",
+<<<<<<< HEAD
+        session: req.token,
+      });
+>>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
     } catch (error) {
       return next(error);
     }
@@ -96,6 +112,8 @@ sessionsRouter.get(
       return res.json({
         statusCode: 200,
         message: "Logged in with github!",
+=======
+>>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
         session: req.session,
       });
     } catch (error) {
