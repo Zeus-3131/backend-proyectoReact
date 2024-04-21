@@ -13,11 +13,7 @@ socket.on("products", (data) => {
     `
     )
     .join("");
-<<<<<<< HEAD
   document.querySelector("#products").innerHTML = template; 
-=======
-  document.querySelector("#products").innerHTML = template;
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
 });
 
 document.querySelector("#newProduct").addEventListener("click", (event) => {

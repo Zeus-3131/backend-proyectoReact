@@ -1,16 +1,14 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-<<<<<<< HEAD
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as GithubStrategy } from "passport-github2";
+import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt"; 
 import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";  
-const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT } = process.env;
-=======
-import { createHash, verifyHash } from "../utils/hash.util.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
+import { usersManager } from "../data/mongo/manager.mongo.js";   
+import User from "../models/user.model.js"; // Importar el modelo de usuario
+
+const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT, SECRET } = process.env;
 
 passport.use(
   "register",
@@ -25,7 +23,10 @@ passport.use(
           let user = await usersManager.create(data);
           return done(null, user);
         } else {
-          return done(null, false);
+          return done(null, false, {
+            message: "User already exists",
+            statusCode: 400,
+          });
         }
       } catch (error) {
         return done(error);
@@ -33,6 +34,7 @@ passport.use(
     }
   )
 );
+
 passport.use(
   "login",
   new LocalStrategy(
@@ -41,22 +43,11 @@ passport.use(
       try {
         const user = await usersManager.readByEmail(email);
         if (user && verifyHash(password, user.password)) {
-<<<<<<< HEAD
-          // req.session.email = email;
-          // req.session.role = user.role;
           const token = createToken({ email, role: user.role });
           req.token = token;
-<<<<<<< HEAD
-
-=======
-=======
-          req.session.email = email;
-          req.session.role = user.role;
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
->>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
           return done(null, user);
         } else {
-          return done(null, false);
+          return done(null, false, { message: "Bad auth!!!" });
         }
       } catch (error) {
         return done(error);
@@ -65,7 +56,6 @@ passport.use(
   )
 );
 
-<<<<<<< HEAD
 passport.use(
   "google",
   new GoogleStrategy(
@@ -80,14 +70,14 @@ passport.use(
         console.log(profile);
         let user = await usersManager.readByEmail(profile.id + "@gmail.com");
         if (!user) {
-          user = {
+          user = new User({
             email: profile.id + "@gmail.com",
-            name: profile.name.givenName,
+            username: profile.name.givenName,
             lastName: profile.name.familyName,
             photo: profile.coverPhoto,
             password: createHash(profile.id),
-          };
-          user = await usersManager.create(user);
+          });
+          user = await user.save();
         }
         req.session.email = user.email;
         req.session.role = user.role;
@@ -113,13 +103,13 @@ passport.use(
         console.log(profile);
         let user = await usersManager.readByEmail(profile.id + "@github.com");
         if (!user) {
-          user = {
+          user = new User({
             email: profile.id + "@github.com",
-            name: profile.username,
+            username: profile.username,
             photo: profile._json.avatar_url,
             password: createHash(profile.id),
-          };
-          user = await usersManager.create(user);
+          });
+          user = await user.save();
         }
         req.session.email = user.email;
         req.session.role = user.role;
@@ -128,9 +118,32 @@ passport.use(
         return done(error);
       }
     }
+  )  
+); 
+
+passport.use(
+  "jwt",
+  new JwtStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromExtractors([     
+        (req) => req?.cookies["token"],
+      ]),
+      secretOrKey: SECRET,
+    },
+    async (payload, done) => {
+      try {
+        const user = await usersManager.readByEmail(payload.email);
+        if (user) { 
+          user.password = null;
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
+      } catch (error) {
+        return done(error);
+      }
+    }
   )
 );
 
-=======
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
 export default passport;

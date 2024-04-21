@@ -12,15 +12,7 @@ sessionsRouter.post(
     session: false,
     failureRedirect: "/api/sessions/badauth",
   }),
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
-  async (req, res, next) => { 
-=======
   async (req, res, next) => {
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
     try {
       return res.json({
         statusCode: 201,
@@ -35,27 +27,17 @@ sessionsRouter.post(
 //login
 sessionsRouter.post(
   "/login",
-  passCallBack("login"),
+  passport.authenticate("login", {
+    session: false,
+    failureRedirect: "/api/sessions/badauth",
+  }),
   async (req, res, next) => {
     try {
-<<<<<<< HEAD
-      return res
-        .cookie("token", req.token, {
-          maxAge: 7 * 24 * 60 * 60 * 1000,
-          httpOnly: true,
-        })
-        .json({
-          statusCode: 200,
-          message: "Logged in!",
-        });
-=======
       return res.json({
         statusCode: 200,
         message: "Logged in!",
-<<<<<<< HEAD
-        session: req.token,
+        token: req.token,
       });
->>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
     } catch (error) {
       return next(error);
     }
@@ -67,12 +49,6 @@ sessionsRouter.post(
   "/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
-
-sessionsRouter.get(
-  "/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
-
 
 //google-callback
 sessionsRouter.get(
@@ -100,6 +76,11 @@ sessionsRouter.post(
   passport.authenticate("github", { scope: ["user:email"] })
 );
 
+sessionsRouter.get(
+  "/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
+
 //github-callback
 sessionsRouter.get(
   "/github/callback",
@@ -112,8 +93,6 @@ sessionsRouter.get(
       return res.json({
         statusCode: 200,
         message: "Logged in with github!",
-=======
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
         session: req.session,
       });
     } catch (error) {
@@ -141,25 +120,23 @@ sessionsRouter.post("/", async (req, res, next) => {
 });
 
 //signout
-sessionsRouter.post(
-  "/signout",
-  /*   passport.authenticate("jwt", {
-    session: false,
-    failureRedirect: "/api/sessions/signout/cb",
-  }), */
-  passCallBack("jwt"),
-  async (req, res, next) => {
-    try {
-      return res.clearCookie("token").json({
+sessionsRouter.post("/signout", async (req, res, next) => {
+  try {
+    if (req.session.email) {
+      req.session.destroy();
+      return res.json({
         statusCode: 200,
         message: "Signed out!",
       });
-    } catch (error) {
-      return next(error);
+    } else {
+      const error = new Error("No Auth");
+      error.statusCode = 400;
+      throw error;
     }
+  } catch (error) {
+    return next(error);
   }
-);
-
+});
 
 //badauth
 sessionsRouter.get("/badauth", (req, res, next) => {

@@ -82,7 +82,6 @@ class MongoManager {
 
   async reportBill(uid) {
     try {
-<<<<<<< HEAD
         const currentDate = new Date(); // Obtener la fecha actual
         const report = await this.model.aggregate([
             { $match: { user_id: new Types.ObjectId(uid) } },
@@ -108,37 +107,6 @@ class MongoManager {
         throw error;
     }
 }
-<<<<<<< HEAD
-=======
-
-  
-=======
-      const report = await this.model.aggregate([
-        { $match: { user_id: new Types.ObjectId(uid) } },
-        {
-          $lookup: {
-            from: "products",
-            localField: "product_id",
-            foreignField: "_id",
-            as: "product",
-          },
-        },
-        {
-          $set: {
-            subtotal: { $multiply: ["$quantity", { $arrayElemAt: ["$product.precio", 0] }] },
-          },
-        },
-        { $group: { _id: "$user_id", total: { $sum: "$subtotal" } } },
-        { $project: { _id: 0, user_id: "$_id", total: "$total", date: new Date() } },
-      ]);
-
-      return report;
-    } catch (error) {
-      throw error;
-    }
-  }
->>>>>>> 7bd71d8b1780526666cd3a2122f4536857a44108
->>>>>>> 9fa59d6cdf7f352caf82ef4efeeae0727fff9015
 }
 
 const usersManager = new MongoManager(User);
