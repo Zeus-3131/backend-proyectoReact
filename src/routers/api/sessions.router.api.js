@@ -50,6 +50,11 @@ sessionsRouter.post(
   passport.authenticate("google", { scope: ["email", "profile"] })
 );
 
+sessionsRouter.get(
+  "/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
 //google-callback
 sessionsRouter.get(
   "/google/callback",
