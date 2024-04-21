@@ -8,7 +8,7 @@ export default (req, res, next) => {
       return next();
     } else {
       const error = new Error("Bad auth from middleware");
-      error.statusCode = 401;
+      error.statusCode = 401; 
       throw error;
     }
   } catch (error) {

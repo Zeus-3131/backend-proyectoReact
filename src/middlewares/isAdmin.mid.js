@@ -12,6 +12,6 @@ export default (req, res, next) => {
       throw error; 
     }
   } catch (error) {
-    return next(error);
+    return next(error); 
   }
 };
