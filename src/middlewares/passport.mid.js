@@ -53,7 +53,7 @@ passport.use(
         return done(error);
       }
     }
-  )
+  ) 
 );
 
 passport.use(
@@ -125,7 +125,7 @@ passport.use(
   "jwt",
   new JwtStrategy(
     {
-      jwtFromRequest: ExtractJwt.fromExtractors([     
+      jwtFromRequest: ExtractJwt.fromExtractors([
         (req) => req?.cookies["token"],
       ]),
       secretOrKey: SECRET,
@@ -133,14 +133,14 @@ passport.use(
     async (payload, done) => {
       try {
         const user = await usersManager.readByEmail(payload.email);
-        if (user) { 
+        if (user) {
           user.password = null;
           return done(null, user);
         } else {
           return done(null, false);
         }
       } catch (error) {
-        return done(error);
+        return done(error); 
       }
     }
   )

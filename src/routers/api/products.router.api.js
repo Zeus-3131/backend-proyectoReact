@@ -1,24 +1,27 @@
 import { Router } from "express";
 import { productsManager } from "../../data/mongo/manager.mongo.js"; 
-import propsProducts from "../../middlewares/propsProducts.mid.js";
+// import propsProducts from "../../middlewares/propsProducts.mid.js";
 import isAdmin from "../../middlewares/isAdmin.mid.js";
-import isAuth from "../../middlewares/isAuth.mid.js";
+// import isAuth from "../../middlewares/isAuth.mid.js";
 import isCapacityOkMid from "../../middlewares/isCapacityOk.mid.js";
+import passCallBackMid from "../../middlewares/passCallBack.mid.js";
 import Product from "../../data/mongo/models/product.model.js";
 
-const productsRouter = Router();
-productsRouter.post("/",isAuth, isAdmin, propsProducts, async (req, res, next) => { 
-  try {
-    const data = req.body;
-    const response = await productsManager.create(data);
-    return res.status(201).json({
-      statusCode: 201,
-      response,
-    });
-  } catch (error) {
-    return next(error);
+const productsRouter = Router(); 
+productsRouter.post(
+  "/",
+  passCallBackMid("jwt"),
+  isAdmin,
+  async (req, res, next) => {
+    try {
+      const data = req.body;
+      const response = await productsManager.create(data);
+      return res.json({ statusCode: 201, response });
+    } catch (error) {
+      return next(error);
+    }
   }
-});
+);
 
 productsRouter.get("/", async (req, res, next) => {
   try {
@@ -29,7 +32,7 @@ productsRouter.get("/", async (req, res, next) => {
     };
     const filter = {};
     if (req.query.name) {
-      filter.name = new RegExp(req.query.name.trim(), "i");
+      filter.name = new RegExp(req.query.name.trim(), "i"); 
     }
     if (req.query.sort === "desc") {
       options.sort.name = "desc";
