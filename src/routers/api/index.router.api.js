@@ -1,4 +1,6 @@
+import CustomRouter from "../CustomRouter.js";
 import { Router } from "express";
+import ProductsRouter from "./products.router.api.js";
 import usersRouter from "./users.router.api.js";
 import productsRouter from "./products.router.api.js";
 import ordersRouter from "./orders.router.api.js";
@@ -7,17 +9,16 @@ import passCallBackMid from "../../middlewares/passCallBack.mid.js";
 // import eventsRouter from "./events.router.api.js";
 // import cookiesRouter from "./cookies.router.api.js";
 
+const product = new ProductsRouter()
 
-const apiRouter = Router()
+export default class ApiRouter extends CustomRouter {
+  init() {
+    // apiRouter.use("/events",eventsRouter)
+    // apiRouter.use("/cookies", cookiesRouter);
+     this.router.use("/users", usersRouter);
+     this.router.use("/products", product.getRouter());
+     this.router.use("/orders", passCallBackMid("jwt"), ordersRouter);
+     this.router.use("/sessions", sessionsRouter);
+  }
+}
 
-//definir los enrutadores de los recursos
-// apiRouter.use("/events",eventsRouter)
-// apiRouter.use("/cookies", cookiesRouter);
-apiRouter.use("/users",usersRouter)
-apiRouter.use("/products",productsRouter)
-apiRouter.use("/orders", passCallBackMid("jwt"),ordersRouter)
-apiRouter.use("/sessions", sessionsRouter);
-
-
-export default apiRouter
-//export el enrutador de la API para poder implementarlo en el enrutador del servidor
