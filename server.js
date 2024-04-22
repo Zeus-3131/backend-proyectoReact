@@ -1,4 +1,5 @@
-import "dotenv/config.js";
+// import "dotenv/config.js";
+import env from "./src/utils/env.util.js"
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -13,7 +14,9 @@ import __dirname from "./utils.js";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
 import sessionFileStore from "session-file-store";
-import MongoStore from "connect-mongo";
+import args from "./src/utils/args.util.js"
+
+// import MongoStore from "connect-mongo";
 
 //server
 const server = express();
@@ -30,11 +33,11 @@ socketServer.on("connection", socketUtils);
 
 const FileStore = sessionFileStore(expressSession);
 //middlewares
-server.use(cookieParser(process.env.SECRET_KEY)); 
+server.use(cookieParser(env.SECRET_KEY)); 
 //MEMORY STORE
 /* server.use(
   expressSession({
-    secret: process.env.SECRET_KEY,
+    secret: env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 60000 },
@@ -43,7 +46,7 @@ server.use(cookieParser(process.env.SECRET_KEY));
 //FILE STORE
 /* server.use(
   expressSession({
-    secret: process.env.SECRET_KEY,
+    secret: env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
     store: new FileStore({
@@ -56,12 +59,12 @@ server.use(cookieParser(process.env.SECRET_KEY));
 //MONGO STORE
 // server.use(
 //   expressSession({
-//     secret: process.env.SECRET_KEY,
+//     secret: env.SECRET_KEY,
 //     resave: true,
 //     saveUninitialized: true,
 //     store: new MongoStore({
 //       ttl: 7 * 24 * 60 * 60, //chequear la unidad de ttl
-//       mongoUrl: process.env.DB_LINK,
+//       mongoUrl: env.DB_LINK,
 //     }),
 //   })
 // );
@@ -84,3 +87,7 @@ const router = new IndexRouter()
 server.use("/", router.getRouter());
 server.use(errorHandler);
 server.use(pathHandler);
+
+// export { socketServer };
+
+console.log(args);
