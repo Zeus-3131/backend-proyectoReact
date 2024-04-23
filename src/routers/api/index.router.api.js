@@ -17,10 +17,10 @@ export default class ApiRouter extends CustomRouter {
   init() {
     // apiRouter.use("/events",eventsRouter)
     // apiRouter.use("/cookies", cookiesRouter);
-    this.router.use("/users", usersRouter);
-    this.router.use("/products", product.getRouter());
-    this.router.use("/orders", passCallBackMid("jwt"), ordersRouter);
-    this.router.use("/sessions", sessionsRouter);
+    this.use("/users", usersRouter);
+    this.use("/products", product.getRouter());
+    this.use("/orders", passCallBackMid("jwt"), ordersRouter);
+    this.use("/sessions", sessionsRouter);
     this.read("/sum", ["PUBLIC"], async (req, res) => {
       try {
         console.log("global process id: " + process.pid);
