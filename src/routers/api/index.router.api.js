@@ -5,22 +5,20 @@ import ProductsRouter from "./products.router.api.js";
 import usersRouter from "./users.router.api.js";
 import ordersRouter from "./orders.router.api.js";
 import sessionsRouter from "./sessions.router.api.js";
-import passCallBackMid from "../../middlewares/passCallBack.mid.js";
+import commentsRouter from "./comments.router.api.js";  
+
 // import { Router } from "express";
 // import productsRouter from "./products.router.api.js";
 // import eventsRouter from "./events.router.api.js";
 // import cookiesRouter from "./cookies.router.api.js";
 
-const product = new ProductsRouter();
-
-export default class ApiRouter extends CustomRouter {
+class ApiRouter extends CustomRouter {
   init() {
-    // apiRouter.use("/events",eventsRouter)
-    // apiRouter.use("/cookies", cookiesRouter);
     this.use("/users", usersRouter);
-    this.use("/products", product.getRouter());
-    this.use("/orders", passCallBackMid("jwt"), ordersRouter);
+    this.use("/products", ProductsRouter);
+    this.use("/orders", ordersRouter);
     this.use("/sessions", sessionsRouter);
+    this.use("/comments", commentsRouter);
     this.read("/sum", ["PUBLIC"], async (req, res) => {
       try {
         console.log("global process id: " + process.pid);
@@ -41,3 +39,6 @@ export default class ApiRouter extends CustomRouter {
     });
   }
 }
+
+const apiRouter = new ApiRouter();
+export default apiRouter.getRouter();
