@@ -11,7 +11,7 @@ const schema = new Schema(
     },
     precio: { type: Number, default: 300000 },
     stock: { type: Number, default: 50 }, 
-    idcat: { type: String, default: crypto.randomBytes(12).toString("hex") },
+    idcat: { type: String, ref: 'categories', default: crypto.randomBytes(12).toString("hex") },
     date: { type: Date, default: new Date() },
   },
   {

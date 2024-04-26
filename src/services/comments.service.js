@@ -16,7 +16,7 @@ class CommentsService {
     try {
       const response = await this.model.read({ filter, options });
       return response;
-    } catch (error) {
+    } catch (error) { 
       throw error;
     }
   };
