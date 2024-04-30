@@ -1,6 +1,6 @@
-// Clase para gestionar los productos
 import fs from "fs";
 import crypto from "crypto";
+import notFoundOne from "../../utils/notFoundOne.utils.js";
 
 class ProductsManager {
   #ivaRate = 0.19; // Tasa de IVA en Colombia
@@ -15,7 +15,7 @@ class ProductsManager {
         this.products = JSON.parse(fs.readFileSync(this.path, "utf-8"));
       }
     } catch (error) {
-      return error.message;
+      throw error;
     }
   }
 
@@ -25,19 +25,18 @@ class ProductsManager {
     this.init();
   }
 
-  async createProduct(data) {
+  async create(data) {
     try {
       if (!data.nombre || data.nombre.trim() === '') {
         throw new Error("El nombre del producto es requerido");
       }
 
       const product = {
-        id: crypto.randomBytes(12).toString("hex"), 
+        id: crypto.randomBytes(12).toString("hex"),
         nombre: data.nombre,
         imagen: data.imagen || "https://i.postimg.cc/HxdvTwqJ/events.jpg",
         precio: data.precio || 300000,
         stock: data.stock || 50,
-        idcat: crypto.randomBytes(12).toString("hex"),
         date: data.date || new Date(),
       };
 
@@ -52,7 +51,7 @@ class ProductsManager {
     }
   }
 
-  readProducts() { 
+  read() {
     try {
       if (this.products.length === 0) {
         throw new Error("¡No hay productos!");
@@ -61,41 +60,31 @@ class ProductsManager {
         return this.products;
       }
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      throw error;
     }
   }
 
-  readProductById(id) {
+  readOne(id) {
     try {
       const one = this.products.find((each) => each.id === id);
-      if (!one) {
-        throw new Error("No hay ningún producto con id=" + id);
-      } else {
-        console.log("Leer " + JSON.stringify(one));
-        return one;
-      }
+      notFoundOne(one); // Utiliza notFoundOne para manejar no encontrado
+      return one;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      throw error;
     }
   }
 
-  async destroyProductById(id) {
+  async destroy(id) {
     try {
-      let one = this.products.find((each) => each.id === id);
-      if (!one) {
-        throw new Error("No hay ningún producto con id=" + id);
-      } else {
-        this.products = this.products.filter((each) => each.id !== id);
-        const jsonData = JSON.stringify(this.products, null, 2);
-        await fs.promises.writeFile(this.path, jsonData);
-        console.log("Producto eliminado con id: " + id);
-        return id;
-      }
+      const one = this.readProductById(id);
+      notFoundOne(one); // Utiliza notFoundOne para manejar no encontrado
+      this.products = this.products.filter((each) => each.id !== id);
+      const jsonData = JSON.stringify(this.products, null, 2);
+      await fs.promises.writeFile(this.path, jsonData);
+      console.log("Producto eliminado con id: " + id);
+      return id;
     } catch (error) {
-      console.log(error.message);
-      return error.message;
+      throw error;
     }
   }
 
@@ -119,13 +108,12 @@ class ProductsManager {
 
           return product.stock;
         } else {
-          return "No hay suficiente stock del producto.";
+          throw new Error("No hay suficiente stock del producto.");
         }
       } else {
-        return "No hay ningún producto con id=" + pid;
+        throw new Error("No hay ningún producto con id=" + pid);
       }
     } catch (error) {
-      console.log(error.message);
       throw error;
     }
   }

@@ -3,7 +3,7 @@ selector.addEventListener("click", async () => {
   try {
     const data = {
       nombre: document.querySelector("#nombre").value,
-      idcat: document.querySelector("#idcat").value,
+      // idcat: document.querySelector("#idcat").value,
     };
     document.querySelector("#imagen").value &&
       (data.imagen = document.querySelector("#imagen").value);

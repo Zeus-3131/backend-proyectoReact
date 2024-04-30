@@ -14,6 +14,8 @@ import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import dbConnection from "./src/utils/db.js";
+import cors from "cors";
+
 
 //server
 const server = express();
@@ -70,6 +72,13 @@ server.use(cookieParser(env.SECRET_KEY));
     }),
   })
 ); */
+server.use(
+  cors({
+    origin: 'http://localhost:5173',
+    origin: true,
+    credentials: true,
+  })
+);
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static("public"));

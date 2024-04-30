@@ -5,7 +5,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt"; 
 import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
-import { usersManager } from "../data/mongo/manager.mongo.js";   
+import usersManager from "../data/mongo/manager.mongo.js";   
 import User from "../data/mongo/models/user.model.js"; // Importar el modelo de usuario
 
 const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT, SECRET } = process.env;

@@ -11,7 +11,7 @@ const schema = new Schema(
       default: "reserved",
       enum: ["reserved", "paid", "delivered"],
     },
-    idcat: { type: Types.ObjectId, ref: "categories" } // Agrega el campo idcat
+    // idcat: { type: Types.ObjectId } // Agrega el campo idcat
   },
   { timestamps: true }
 );
@@ -20,7 +20,7 @@ const schema = new Schema(
 schema.pre(/^find/, function (next) {
   this.populate("user_id", "-password -createdAt -updatedAt -__v");
   this.populate("product_id", "nombre precio stock");
-  this.populate("idcat", "-createdAt -updatedAt -__v"); // Poblar el campo idcat
+  // Elimina la línea que intenta poblar idcat
   next();
 });
 

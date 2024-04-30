@@ -59,8 +59,7 @@
 
 
 import CustomRouter from "../CustomRouter.js";
-import { productsManager } from "../../data/mongo/manager.mongo.js";
-
+import productsManager from "../../data/mongo/manager.mongo.js";
 import productsRouter from "./products.view.js";
 import sessionsRouter from "./sessions.view.js";
 import ordersRouter from "./orders.view.js"; 
