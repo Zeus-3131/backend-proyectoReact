@@ -2,10 +2,12 @@ import { fork } from "child_process";
 
 import CustomRouter from "../CustomRouter.js";
 import usersRouter from "./users.router.api.js";
-import productsRouter from "./products.router.api.js"; 
+import productsRouter from "./products.router.api.js";
 import ordersRouter from "./orders.router.api.js";
 import sessionsRouter from "./sessions.router.api.js";
 import commentsRouter from "./comments.router.api.js";
+import authRouter from "./auth.router.api.js";
+
 
 class ApiRouter extends CustomRouter {
   init() {
@@ -14,6 +16,7 @@ class ApiRouter extends CustomRouter {
     this.use("/orders", ordersRouter);
     this.use("/sessions", sessionsRouter);
     this.use("/comments", commentsRouter);
+    this.use("/auth", authRouter);
     this.read("/sum", ["PUBLIC"], async (req, res, next) => {
       try {
         console.log("global process id: " + process.pid);

@@ -12,7 +12,7 @@ switch (environment) {
     dao = { products: productsMemory };
     break;
   case "dev":
-    // Usar FS para productos
+    // Usar FS para productos 
     console.log("FS CONNECTED");
     const { default: productsFs } = await import("./fs/products.fs.js");
     const { default: usersFs } = await import("./fs/users.fs.js");

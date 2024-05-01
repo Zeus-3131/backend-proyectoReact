@@ -7,8 +7,8 @@ class UserDTO {
       (this._id = crypto.randomBytes(12).toString("hex"));
     this.email = data.email;
     this.password = data.password;
-    this.username = data.username; // Cambiando 'name' por 'username'
-    this.lastName = data.lastName;
+    this.username = data.username; 
+    this.lastName = data.lastName || ""; 
     this.photo = data.photo || "https://i.postimg.cc/wTgNFWhR/profile.png";
     this.age = data.age || 18;
     this.role = data.role || 0;

@@ -12,6 +12,13 @@ class UsersService {
   readByEmail = async (id) => await this.model.readByEmail(email);
   update = async (data) => await this.model.update(id, data);
   destroy = async (id) => await this.model.destroy(id);
+  register = async(data) => {
+    try {
+      await sendEmail(data)
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 const service = new UsersService();
