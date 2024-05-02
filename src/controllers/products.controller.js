@@ -7,6 +7,7 @@ class ProductsController {
   create = async (req, res, next) => {
     try {
       const data = req.body;
+      //winston.INFO(JSON.stringify(data));
       const response = await this.service.create(data);
       return res.success201(response);
     } catch (error) {

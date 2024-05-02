@@ -18,6 +18,7 @@ selector.addEventListener("click", async () => {
       body: JSON.stringify(data),
     };
     let response = await fetch("/api/sessions/register", opts);
+    //winston.INFO(JSON.stringify(data));
     response = await response.json();
     console.log(response);
     response.statusCode === 201

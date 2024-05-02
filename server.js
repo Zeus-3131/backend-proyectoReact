@@ -16,14 +16,15 @@ import __dirname from "./utils.js";
 import dbConnection from "./src/utils/db.js";
 import cors from "cors";
 import compression from "express-compression";
-
+import winston from "./src/middlewares/winston.mid.js";
+import wintsonLog from "./src/utils/logger/index.js";
 
 
 //server
 const server = express();
 const PORT = env.PORT || 8080;
 const ready = () => {
-  console.log("server ready on port " + PORT);
+  wintsonLog.INFO("server ready on port " + PORT);
   dbConnection();
   console.log("mode " + args.env);
 };
@@ -85,6 +86,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static("public"));
 server.use(morgan("dev"));
+server.use(winston);
 server.use( compression({
 brotli: { enabled: true, zlib: {} },
 })

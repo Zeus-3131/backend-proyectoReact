@@ -49,6 +49,7 @@ passport.use(
         } else {
           const user = await repository.create(req.body);
           console.log(user);
+          //winston.INFO(JSON.stringify(user));
           return done(null, user);
         }
       } catch (error) {
@@ -112,6 +113,7 @@ passport.use(
     },
     async (req, accessToken, refreshToken, profile, done) => {
       try {
+        //winston.INFO(JSON.stringify(profile));
         console.log(profile);
         let user = await usersManager.readByEmail(profile.id + "@gmail.com");
         if (!user) {

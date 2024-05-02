@@ -8,6 +8,7 @@ class OrdersController {
     try {
       const data = req.body;
       data.user_id = req.user._id;
+      //winston.INFO(JSON.stringify(data));
       const response = await this.service.create(data);
       return res.success201(response);
     } catch (error) {

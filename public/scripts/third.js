@@ -6,6 +6,7 @@ google.addEventListener("click", async () => {
       headers: { "Content-Type": "application/json" },
     };
     let response = await fetch("/api/sessions/google", opts);
+    //winston.INFO(JSON.stringify(data));
     response = await response.json();
     console.log(response);
     //alert(response.message);

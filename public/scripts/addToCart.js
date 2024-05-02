@@ -8,6 +8,7 @@ selector.addEventListener("click", async (event) => {
       body: JSON.stringify(data),
     };
     let response = await fetch("/api/orders", opts);
+    //winston.INFO(JSON.stringify(data));
     response = await response.json();
     console.log(response);
     if (response.statusCode === 401) alert("PLEASE LOG IN!");

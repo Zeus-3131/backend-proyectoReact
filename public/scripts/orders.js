@@ -8,6 +8,7 @@ selectors.forEach((each) =>
         headers: { "Content-Type": "application/json" },
       };
       let response = await fetch(url, opts);
+      //winston.INFO(JSON.stringify(data));
       response = await response.json();
       console.log(response);
       if(response.statusCode===200) {
