@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon ./server.js",
     "dev": "nodemon ./server.js --env dev",
-    "test": "nodemon ./server.js --env test"
+    "test": "nodemon ./server.js --env test",
+    "mocks": "node ./src/dao/mocks/users.mock.js && exit"
   },
   "keywords": [],
   "author": "",
@@ -37,5 +38,8 @@
     "session-file-store": "^1.5.0",
     "socket.io": "^4.7.5",
     "twilio": "^5.0.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }
