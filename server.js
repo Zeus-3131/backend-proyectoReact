@@ -15,6 +15,8 @@ import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import dbConnection from "./src/utils/db.js";
 import cors from "cors";
+import compression from "express-compression";
+
 
 
 //server
@@ -83,6 +85,11 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static("public"));
 server.use(morgan("dev"));
+server.use( compression({
+brotli: { enabled: true, zlib: {} },
+})
+);
+
 
 //endpoints
 server.use("/", router);
