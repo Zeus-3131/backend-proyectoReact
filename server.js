@@ -18,6 +18,8 @@ import cors from "cors";
 import compression from "express-compression";
 import winston from "./src/middlewares/winston.mid.js";
 import wintsonLog from "./src/utils/logger/index.js";
+import cluster from "cluster";
+import { cpus } from "os";
 
 
 //server
@@ -26,9 +28,9 @@ const PORT = env.PORT || 8080;
 const ready = () => {
   wintsonLog.INFO("server ready on port " + PORT);
   dbConnection();
-  console.log("mode " + args.env);
+  console.log("mode " + args.env); 
 };
-const httpServer = createServer(server);
+const httpServer = createServer(server); 
 const socketServer = new Server(httpServer);
 httpServer.listen(PORT, ready);
 socketServer.on("connection", socketUtils);
@@ -91,6 +93,21 @@ server.use( compression({
 brotli: { enabled: true, zlib: {} },
 })
 );
+
+//clusters
+// console.log(cluster.isPrimary);
+// if (cluster.isPrimary) {
+//   console.log("PRIMARY ID: " + process.pid);
+//   const numberOfProcess = cpus().length;
+//   console.log("NUMBER OF PROCESS OF MY COMPUTER: " + numberOfProcess);
+//   for (let i = 1; i <= numberOfProcess; i++) {
+//     cluster.fork();
+//   }
+// } else {
+//   console.log("WORKER ID: " + process.pid);
+//   server.listen(PORT, ready);
+// }
+
 
 
 //endpoints
