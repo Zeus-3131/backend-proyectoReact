@@ -1,5 +1,5 @@
 // import productsManager from "../data/fs/products.fs.js";
-import { productsManager } from "../data/mongo/manager.mongo.js";
+import { productsManager } from "../data/mongo/products.mongo.js";
 
 export default async (req, res, next) => {
   try {

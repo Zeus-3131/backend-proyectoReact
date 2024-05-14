@@ -59,12 +59,12 @@
 
 
 import CustomRouter from "../CustomRouter.js";
-import productsManager from "../../data/mongo/manager.mongo.js";
+import productsManager from "../../data/mongo/products.mongo.js";
 import productsRouter from "./products.view.js";
 import sessionsRouter from "./sessions.view.js";
 import ordersRouter from "./orders.view.js"; 
 
-export default class ViewsRouter extends CustomRouter {
+export default class ViewsRouter extends CustomRouter { 
   init() {
     this.router.use("/products", productsRouter);
     this.router.use("/orders", ordersRouter);

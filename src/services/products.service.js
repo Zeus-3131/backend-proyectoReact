@@ -4,7 +4,7 @@ import ProductDTO from "../dto/product.dto.js"; // Cambiando EventDTO por Produc
 class ProductsService { // Cambiando EventsService por ProductsService
   constructor() {
     this.repository = repository;
-  }
+  } 
   create = async (data) => {
     data = new ProductDTO(data); // Cambiando EventDTO por ProductDTO
     const response = await this.repository.create(data);

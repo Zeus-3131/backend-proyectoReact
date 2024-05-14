@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import usersManager from "../data/mongo/users.mongo.js";
 
 export default class CustomRouter {
-  constructor() {
+  constructor() { 
     this.router = Router();
     this.init(); 
   }

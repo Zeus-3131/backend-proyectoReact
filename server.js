@@ -20,6 +20,9 @@ import winston from "./src/middlewares/winston.mid.js";
 import wintsonLog from "./src/utils/logger/index.js";
 import cluster from "cluster";
 import { cpus } from "os";
+import options from "./src/config/swagger.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import { serve, setup } from "swagger-ui-express";
 
 
 //server
@@ -84,6 +87,9 @@ server.use(
     credentials: true,
   })
 );
+
+const specs = swaggerJSDoc(options);
+server.use("/api/docs", serve, setup(specs));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static("public"));

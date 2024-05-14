@@ -33,7 +33,7 @@
 
 
 import { Router } from "express"; 
-import productsManager from "../../data/mongo/manager.mongo.js";
+import productsManager from "../../data/mongo/products.mongo.js";
 import passCallBack from "../../middlewares/passCallBack.mid.js";
 import isAdmin from "../../middlewares/isAdmin.mid.js";
 
@@ -62,7 +62,7 @@ productsRouter.get("/:eid", async (req, res, next) => {
     return res.render("detail", { event: one, title: one.title.toUpperCase() });
   } catch (error) {
     next(error);
-  }
+  } 
 });
 
 export default productsRouter;

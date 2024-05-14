@@ -15,7 +15,7 @@ class MongoManager {
     }
   }
 
-  async read({ filter, options }) {
+  async read({ filter, options }) { 
     try {
       const all = await this.model.find(filter, null, options);
       notFoundOne(all); // Utiliza notFoundOne para manejar no encontrado

@@ -6,16 +6,16 @@ import {
   stats,
   update,
   destroy,
-} from "../../controllers/users.controller.js";
+} from "../../controllers/users.controller.js"; 
 
 class UsersRouter extends CustomRouter {
   init() {
     this.create("/", ["PUBLIC"], create);
-    this.read("/", ["ADMIN"], read);
-    this.read("/stats", ["USER", "PREM"], stats);
-    this.read("/:uid", ["USER", "PREM"], readOne);
-    this.update("/:uid", ["USER", "PREM"], update);
-    this.destroy("/:uid", ["USER", "PREM"], destroy);
+    this.read("/", ["ADMIN","PUBLIC"], read); //puesto public para pruebas
+    this.read("/stats", ["USER", "PREM","PUBLIC"], stats);//puesto public para pruebas
+    this.read("/:uid", ["USER", "PREM","PUBLIC"], readOne);//puesto public para pruebas
+    this.update("/:uid", ["USER", "PREM","PUBLIC"], update);//puesto public para pruebas
+    this.destroy("/:uid", ["USER", "PREM","PUBLIC"], destroy);//puesto public para pruebas
   }
 }
 

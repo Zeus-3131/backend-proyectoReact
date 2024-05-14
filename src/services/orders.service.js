@@ -1,4 +1,4 @@
-import orderManager from "../data/mongo/manager.mongo.js";
+import orderManager from "../data/mongo/orders.mongo.js";
 
 class OrdersService {
   constructor() {

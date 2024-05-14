@@ -1,6 +1,6 @@
 import { Router } from "express";
-import orderManager from "../../data/mongo/manager.mongo.js";
-import usersManager from "../../data/mongo/manager.mongo.js";
+import orderManager from "../../data/mongo/orders.mongo.js";
+import usersManager from "../../data/mongo/users.mongo.js";
 import passCallBack from "../../middlewares/passCallBack.mid.js";
 
 const productsRouter = Router();
