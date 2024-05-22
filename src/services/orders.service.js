@@ -9,7 +9,7 @@ class OrdersService {
     await this.model.read({ filter, options });
   report = async (id) => await this.model.report(id);
   update = async (data) => await this.model.update(id, data);
-  destroy = async (id) => await this.model.destroy(id);
+  destroy = async (id) => await this.model.destroy(id); 
 }
 
 const service = new OrdersService();

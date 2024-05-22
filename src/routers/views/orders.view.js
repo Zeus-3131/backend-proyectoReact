@@ -9,7 +9,7 @@ productsRouter.get("/", passCallBack("jwt"), async (req, res, next) => {
   try {
     const options = {
       limit: req.query.limit || 20,
-      page: req.query.page || 1,
+      page: req.query.page || 1, 
       sort: { title: 1 },
       lean: true,
     };

@@ -73,7 +73,7 @@ import repository from "../repositories/users.rep.js";
 class SessionsController {
   register = async (req, res, next) => {
     try {
-      return res.success201("Registered!");
+      return res.status(201).json({ message: "Registered!" });
     } catch (error) {
       return next(error);
     }
@@ -86,7 +86,8 @@ class SessionsController {
           maxAge: 7 * 24 * 60 * 60 * 1000,
           httpOnly: true,
         })
-        .success200("Logged in!");
+        .status(200)
+        .json({ message: "Logged in!" });
     } catch (error) {
       return next(error);
     }
@@ -94,7 +95,7 @@ class SessionsController {
 
   google = async (req, res, next) => {
     try {
-      return res.success200("Logged in with Google!");
+      return res.status(200).json({ message: "Logged in with Google!" });
     } catch (error) {
       return next(error);
     }
@@ -102,7 +103,7 @@ class SessionsController {
 
   github = async (req, res, next) => {
     try {
-      return res.success200("Logged in with Github!");
+      return res.status(200).json({ message: "Logged in with Github!" });
     } catch (error) {
       return next(error);
     }
@@ -115,7 +116,7 @@ class SessionsController {
         role: req.user.role,
         photo: req.user.photo,
       };
-      return res.success200(user);
+      return res.status(200).json(user);
     } catch (error) {
       return next(error);
     }
@@ -123,7 +124,7 @@ class SessionsController {
 
   signout = async (req, res, next) => {
     try {
-      return res.clearCookie("token").success200("Signed out!");
+      return res.clearCookie("token").status(200).json({ message: "Signed out!" });
     } catch (error) {
       return next(error);
     }
@@ -131,7 +132,7 @@ class SessionsController {
 
   badauth = (req, res, next) => {
     try {
-      return res.error401();
+      return res.status(401).json();
     } catch (error) {
       return next(error);
     }
@@ -169,7 +170,5 @@ class SessionsController {
 }
 
 const controller = new SessionsController();
-const { register, login, google, github, me, signout, badauth, googleCallback, githubCallback } = controller;
-
-export { register, login, google, github, me, signout, badauth, googleCallback, githubCallback };
+export const { register, login, google, github, me, signout, badauth, googleCallback, githubCallback } = controller;
 export default controller;

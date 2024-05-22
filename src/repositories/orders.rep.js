@@ -7,7 +7,7 @@ class OrdersRep {
   constructor() {
     this.model = orders;
   }
-  create = async (data) => {
+  create = async (data) => { 
     data = new OrderDTO(data);
     const response = await this.model.create(data);
     return response;
@@ -16,7 +16,7 @@ class OrdersRep {
     await this.model.read({ filter, options });
   readOne = async (id) => await this.model.readOne(id);
   update = async (id, data) => await this.model.update(id, data);
-  destroy = async (id) => await this.model.destroy(id);
+  destroy = async (id) => await this.model.destroy(id); 
 }
 
 const repository = new OrdersRep();

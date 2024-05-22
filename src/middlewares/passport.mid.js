@@ -221,41 +221,37 @@
 
 // export default passport;
 
-
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
-import repository from "../repositories/users.rep.js";
+import repository from "../repositories/users.rep.js"; 
 import { verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
 
 const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT, SECRET } = process.env;
 
 passport.use(
-    "register",
-    new LocalStrategy(
-      { passReqToCallback: true, usernameField: "email" },
-      async (req, email, password, done) => {
-        try {
-          let one = await repository.readByEmail(email);
-          if (one) {
-            return done(null, false, { statusCode: 401, message: "User already exists" });
-          } else {
-            const user = await repository.create(req.body);
-            console.log(user);
-            //winston.INFO(JSON.stringify(user));
-            return done(null, user);
-          }
-        } catch (error) {
-          return done(error);
+  "register",
+  new LocalStrategy(
+    { passReqToCallback: true, usernameField: "email" },
+    async (req, email, password, done) => {
+      try {
+        let one = await repository.readByEmail(email);
+        if (one) {
+          return done(null, false, { statusCode: 401, message: "User already exists" });
+        } else {
+          const user = await repository.create(req.body);
+          console.log(user);
+          return done(null, user);
         }
+      } catch (error) {
+        return done(error);
       }
-    )
-  );
-
-
+    }
+  )
+);
 
 passport.use(
   "login",
@@ -350,4 +346,4 @@ passport.use(
   )
 );
 
-export default passport; 
+export default passport;

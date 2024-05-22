@@ -159,6 +159,4 @@ class UsersController {
 
 export default UsersController;
 const controller = new UsersController();
-const { create, read, stats, readOne, update, destroy } = controller;
-export { create, read, stats, readOne, update, destroy };
-
+export const { create, read, stats, readOne, update, destroy } = controller;

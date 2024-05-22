@@ -25,55 +25,38 @@
 // export default service;
 
 import usersManager from "../data/mongo/users.mongo.js";
+import UserDTO from "../dto/user.dto.js";
+import  sendEmail  from "../utils/sendEmail.utils.js";
 
 class UsersService {
   constructor() {
     this.model = usersManager;
   }
 
-  async create(data) {
-    return await this.model.create(data);
-  }
+  create = async (data) => {
+    const userDTO = new UserDTO(data);
+    return await this.model.create(userDTO);
+  };
 
-  async read({ filter, options }) {
-    return await this.model.read({ filter, options });
-  }
+  read = async ({ filter, options }) => await this.model.read({ filter, options });
 
-  async stats(id) {
-    return await this.model.stats(id);
-  }
+  stats = async (id) => await this.model.stats(id);
 
-  async readOne(id) {
+  readOne = async (id) => await this.model.readOne(id);
+
+  readByEmail = async (email) => await this.model.readByEmail(email);
+
+  update = async (id, data) => await this.model.update(id, data);
+
+  destroy = async (id) => await this.model.destroy(id);
+
+  register = async (data) => {
     try {
-      const user = await this.model.readOne(id);
-      if (!user) {
-        throw new Error("Documento no encontrado");
-      }
-      return user;
+      await sendEmail(data);
     } catch (error) {
       throw error;
     }
-  }
-
-  async readByEmail(email) {
-    return await this.model.readByEmail(email);
-  }
-
-  async update(id, data) {
-    return await this.model.update(id, data);
-  }
-
-  async destroy(id) {
-    return await this.model.destroy(id);
-  }
-
-  async register(data) {
-    try {
-      // Implementa la lógica para enviar el correo electrónico aquí
-    } catch (error) {
-      throw error;
-    }
-  }
+  };
 }
 
 const service = new UsersService();
