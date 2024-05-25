@@ -134,33 +134,35 @@
 
 import service from "../services/users.service.js";
 import jwt from "jsonwebtoken";
-import isValidPass  from "../utils/isValidPass.utils.js";
+import isValidPass from "../utils/isValidPass.utils.js";
+import repository from "../repositories/users.rep.js";
 
 class AuthController {
   constructor() {
     this.service = service;
+    this.repository = repository;
   }
 
-  register = async (req, res, next) => {
+  async register(req, res, next) {
     try {
-      const { email, username, password } = req.body; 
+      const { email, username, password } = req.body;
       const userData = {
         email,
         name: username,
         password,
       };
 
-      const newUser = await this.service.create(userData);
+      const newUser = await this.repository.create(userData);
       return res.status(201).json({ message: "Registered!", user: newUser });
     } catch (error) {
       return next(error);
     }
-  };
+  }
 
-  login = async (req, res, next) => {
+  async login(req, res, next) {
     try {
       const { email, password } = req.body;
-      const user = await this.service.readByEmail(email);
+      const user = await this.repository.readByEmail(email);
 
       if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -184,20 +186,20 @@ class AuthController {
     } catch (error) {
       return next(error);
     }
-  };
+  }
 
-  signout = async (req, res, next) => {
+  async signout(req, res, next) {
     try {
       return res.clearCookie("token").status(200).json({ message: "Signed out!" });
     } catch (error) {
       return next(error);
     }
-  };
+  }
 
-  verifyAccount = async (req, res, next) => {
+  async verifyAccount(req, res, next) {
     try {
       const { email, verifiedCode } = req.body;
-      const user = await this.service.readByEmail(email);
+      const user = await this.repository.readByEmail(email);
 
       if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -207,12 +209,12 @@ class AuthController {
         return res.status(400).json({ message: "Invalid verification code" });
       }
 
-      await this.service.update(user._id, { verified: true });
+      await this.repository.update(user._id, { verified: true });
       return res.status(200).json({ message: "Verified user!" });
     } catch (error) {
       return next(error);
     }
-  };
+  }
 }
 
 const controller = new AuthController();

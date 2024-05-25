@@ -254,7 +254,7 @@ class MongoManager {
       const one = await this.model.create(data);
       return one;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
@@ -266,7 +266,7 @@ class MongoManager {
       }
       return all;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
@@ -276,37 +276,37 @@ class MongoManager {
       notFoundOne(one);
       return one;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
   async readByEmail(email) {
     try {
-      const one = await this.model.findOne({ email });
+      const one = await this.model.findOne({ email }).exec();
       return one;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
   async update(id, data) {
     try {
       const opt = { new: true };
-      const one = await this.model.findByIdAndUpdate(id, data, opt);
+      const one = await this.model.findByIdAndUpdate(id, data, opt).lean();
       notFoundOne(one);
       return one;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
   async destroy(id) {
     try {
-      const one = await this.model.findByIdAndDelete(id);
+      const one = await this.model.findByIdAndDelete(id).lean();
       notFoundOne(one);
       return one;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
@@ -318,7 +318,7 @@ class MongoManager {
       ]);
       return stats;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 
@@ -355,7 +355,7 @@ class MongoManager {
       ]);
       return report;
     } catch (error) {
-      throw error;
+      throw new CustomError(errors.internal, error.message);
     }
   }
 }

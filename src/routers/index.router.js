@@ -54,7 +54,7 @@ import winston from "../utils/logger/index.js";
 
 
 const views = new ViewsRouter();
-const viewsRouter = views.getRouter();
+const viewsRouter = views.getRouter(); 
 
 class IndexRouter extends CustomRouter {
   init() {

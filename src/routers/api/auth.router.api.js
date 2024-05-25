@@ -26,7 +26,7 @@ import {
 import passCallback from "../../middlewares/passCallBack.mid.js";
 
 const authRouter = Router();
-
+ 
 authRouter.post("/register", passCallback("register"), register);
 authRouter.post("/login", passCallback("login"), login);
 authRouter.post("/signout", passCallback("jwt"), signout);

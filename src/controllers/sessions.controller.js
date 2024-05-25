@@ -65,15 +65,18 @@
 // const { register, login, google, github, me, signout, badauth } = controller;
 // export { register, login, google, github, me, signout, badauth };
 
-import { createToken } from "../utils/token.util.js";
 import { verifyHash } from "../utils/hash.util.js";
-import User from "../data/mongo/models/user.model.js";
+import { createToken } from "../utils/token.util.js";
 import repository from "../repositories/users.rep.js";
 
 class SessionsController {
   register = async (req, res, next) => {
     try {
-      return res.status(201).json({ message: "Registered!" });
+      return res.status(201).json({
+        status: 201,
+        user: req.user,
+        message: "Registered!",
+      });
     } catch (error) {
       return next(error);
     }
@@ -81,13 +84,28 @@ class SessionsController {
 
   login = async (req, res, next) => {
     try {
+      const { email, password } = req.body;
+      const user = await repository.readByEmail(email);
+
+      // Verificar si el usuario existe y la contraseña es correcta
+      if (!user || !verifyHash(password, user.password)) {
+        return res
+          .status(401)
+          .json({
+            status: 401,
+            message: "Email invalido o contraseña incorrecta",
+          });
+      }
+
+      // Si las credenciales son válidas, generar un token y establecer la cookie
+      const token = createToken({ _id: user._id, role: user.role });
       return res
-        .cookie("token", req.token, {
+        .cookie("token", token, {
           maxAge: 7 * 24 * 60 * 60 * 1000,
           httpOnly: true,
         })
         .status(200)
-        .json({ message: "Logged in!" });
+        .json({ status: 200, message: "Usuario Logueado!" });
     } catch (error) {
       return next(error);
     }
@@ -95,7 +113,9 @@ class SessionsController {
 
   google = async (req, res, next) => {
     try {
-      return res.status(200).json({ message: "Logged in with Google!" });
+      return res
+        .status(200)
+        .json({ status: 200, message: "Logged in with Google!" });
     } catch (error) {
       return next(error);
     }
@@ -103,7 +123,9 @@ class SessionsController {
 
   github = async (req, res, next) => {
     try {
-      return res.status(200).json({ message: "Logged in with Github!" });
+      return res
+        .status(200)
+        .json({ status: 200, message: "Logged in with Github!" });
     } catch (error) {
       return next(error);
     }
@@ -116,7 +138,7 @@ class SessionsController {
         role: req.user.role,
         photo: req.user.photo,
       };
-      return res.status(200).json(user);
+      return res.status(200).json({ status: 200, user: user });
     } catch (error) {
       return next(error);
     }
@@ -124,7 +146,10 @@ class SessionsController {
 
   signout = async (req, res, next) => {
     try {
-      return res.clearCookie("token").status(200).json({ message: "Signed out!" });
+      return res
+        .clearCookie("token")
+        .status(200)
+        .json({status: 200, message: "Sesión cerrada" });
     } catch (error) {
       return next(error);
     }
@@ -170,5 +195,15 @@ class SessionsController {
 }
 
 const controller = new SessionsController();
-export const { register, login, google, github, me, signout, badauth, googleCallback, githubCallback } = controller;
+export const {
+  register,
+  login,
+  google,
+  github,
+  me,
+  signout,
+  badauth,
+  googleCallback,
+  githubCallback,
+} = controller;
 export default controller;

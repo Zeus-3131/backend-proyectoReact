@@ -239,3 +239,40 @@
 [31mERROR[39m: this.readProductById is not a function
 [31mERROR[39m: No hay ningún producto con id=477040e32e9f09791afacafb
 [33mWARN[39m: No hay ningún documento
+[33mWARN[39m: No hay ningún documento
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: repository.readByEmail is not a function
+[31mERROR[39m: repository.readByEmail is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[31mERROR[39m: this.model.findOne is not a function
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path

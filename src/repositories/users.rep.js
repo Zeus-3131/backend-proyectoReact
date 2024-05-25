@@ -59,44 +59,70 @@
 
 
 import UserDTO from "../dto/user.dto.js";
-import dao from "../data/index.factory.js";
+import User from "../data/mongo/models/user.model.js";
 
-const { users } = dao;
-
-class UsersRep {
+class UserRepository {
   constructor() {
-    this.model = users; 
+    this.model = User;
   }
 
   async create(data) {
-    data = new UserDTO(data);
-    const response = await this.model.create(data);
-    console.log("User created:", response);
-    return response;
+    try {
+      data = new UserDTO(data);
+      const response = await this.model.create(data);
+      console.log("User created:", response);
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async read({ filter, options }) {
-    const response = await this.model.paginate(filter, options);
-    console.log('Read response from repository:', response);
-    return response;
+    try {
+      const response = await this.model.paginate(filter, options);
+      console.log('Read response from repository:', response);
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async readByEmail(email) {
-    return await this.model.findOne({ email }).exec();
+    try {
+      const one = await this.model.findOne({ email }).exec();
+      return one;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async readOne(id) {
-    return await this.model.findById(id).exec();
-  } 
+    try {
+      const one = await this.model.findById(id).exec();
+      return one;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async update(id, data) {
-    return await this.model.findByIdAndUpdate(id, data, { new: true }).exec();
+    try {
+      const one = await this.model.findByIdAndUpdate(id, data, { new: true }).exec();
+      return one;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async destroy(id) {
-    return await this.model.findByIdAndDelete(id).exec();
+    try {
+      const one = await this.model.findByIdAndDelete(id).exec();
+      return one;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
-const repository = new UsersRep();
+const repository = new UserRepository();
 export default repository;
