@@ -25,6 +25,8 @@
 // export default User;
 
 
+// user.model.js
+
 import { model, Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
@@ -42,7 +44,7 @@ const schema = new Schema(
     role: { type: Number, default: 0 },
     age: { type: Number, default: 18 }
   },
-  { timestamps: true }
+  { timestamps: true } 
 );
 
 schema.plugin(mongoosePaginate);

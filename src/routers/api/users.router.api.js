@@ -30,7 +30,7 @@ import {
   stats,
   update,
   destroy,
-} from "../../controllers/users.controller.js"; 
+} from "../../controllers/users.controller.js";
 
 class UsersRouter extends CustomRouter {
   init() {
@@ -38,12 +38,10 @@ class UsersRouter extends CustomRouter {
     this.read("/", ["ADMIN", "PUBLIC"], read);
     this.read("/stats", ["USER", "PREM", "PUBLIC"], stats);
     this.read("/:uid", ["USER", "PREM", "PUBLIC"], readOne);
-    this.update("/:uid", ["USER", "PREM"], update); // "USER" y "PREM" tienen acceso a actualizar
-    this.destroy("/:uid", ["USER", "PREM"], destroy); // "USER" y "PREM" tienen acceso a eliminar
+    this.update("/:uid", ["USER", "PREM", "PUBLIC"], update);
+    this.destroy("/:uid", ["USER", "PREM", "PUBLIC"], destroy);
   }
 }
 
 const usersRouter = new UsersRouter();
 export default usersRouter.getRouter();
-
-

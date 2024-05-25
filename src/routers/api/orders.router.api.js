@@ -30,7 +30,7 @@ import {
   destroy,
 } from "../../controllers/orders.controller.js";
 
-class OrdersRouter extends CustomRouter {
+class OrdersRouter extends CustomRouter {  
   init() {
     this.create("/", ["USER", "PREM"], create); // Ajustado para usuarios logueados
     this.read("/bills/:uid", ["ADMIN", "PUBLIC"], report);
