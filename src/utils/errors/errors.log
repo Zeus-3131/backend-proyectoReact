@@ -222,3 +222,20 @@
 [33mWARN[39m: GET /favicon.ico not found path
 [31mERROR[39m: Cannot read properties of undefined (reading 'read')
 [33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.model.update is not a function
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.readProductById is not a function
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.readProductById is not a function
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.readProductById is not a function
+[31mERROR[39m: this.model.readOne is not a function
+[31mERROR[39m: this.model.readOne is not a function
+[31mERROR[39m: this.model.update is not a function
+[31mERROR[39m: this.readProductById is not a function
+[31mERROR[39m: No hay ningún producto con id=477040e32e9f09791afacafb
+[33mWARN[39m: No hay ningún documento
