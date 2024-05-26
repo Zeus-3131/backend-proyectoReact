@@ -70,7 +70,6 @@
 // const { create, read, readOne, update, destroy } = controller;
 // export { create, read, readOne, update, destroy };
 
-
 // products.controller.js
 
 import service from "../services/products.service.js";
@@ -84,7 +83,9 @@ class ProductsController {
     try {
       const data = req.body;
       const response = await this.service.create(data);
-      return res.status(201).json(response);
+      return res
+        .status(201)
+        .json({ status: 201, response, message: "Producto creado" });
     } catch (error) {
       return next(error);
     }
@@ -106,7 +107,7 @@ class ProductsController {
         options.sort.title = "desc";
       }
       const all = await this.service.read({ filter, options });
-      return res.status(200).json(all);
+      return res.status(200).json({ status: 200, all });
     } catch (error) {
       return next(error);
     }
@@ -114,9 +115,9 @@ class ProductsController {
 
   readOne = async (req, res, next) => {
     try {
-      const { pid } = req.params; // Cambiado de eid a pid
-      const one = await this.service.readOne(pid); // Cambiado de eid a pid
-      return res.status(200).json(one);
+      const { pid } = req.params;
+      const one = await this.service.readOne(pid);
+      return res.status(200).json({ status: 200, one });
     } catch (error) {
       return next(error);
     }
@@ -126,8 +127,10 @@ class ProductsController {
     try {
       const { pid } = req.params;
       const data = req.body;
-      const response = await this.service.update(pid, data); // Cambiado de eid a pid
-      return res.status(200).json(response);
+      const response = await this.service.update(pid, data); 
+      return res
+        .status(200)
+        .json({ status: 200, response, message: "Producto actualizado" });
     } catch (error) {
       return next(error);
     }
@@ -136,8 +139,8 @@ class ProductsController {
   destroy = async (req, res, next) => {
     try {
       const { pid } = req.params;
-      const response = await this.service.destroy(pid); // Cambiado de eid a pid
-      return res.status(200).json(response);
+      const response = await this.service.destroy(pid); 
+      return res.status(200).json({status: 200, response, message: "Producto eliminado"});
     } catch (error) {
       return next(error);
     }

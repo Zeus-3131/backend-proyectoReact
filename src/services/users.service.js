@@ -55,7 +55,7 @@ import sendEmail from "../utils/sendEmail.utils.js";
 
 class UsersService {
   constructor() {
-    this.model = usersManager;
+    this.model = usersManager; 
   }
 
   async create(data) {

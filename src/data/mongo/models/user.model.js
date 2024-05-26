@@ -44,7 +44,7 @@ const schema = new Schema(
   },
   { timestamps: true } 
 );
-
+ 
 schema.plugin(mongoosePaginate);
 
 const User = model(collection, schema);

@@ -124,5 +124,5 @@ class UserRepository {
   }
 }
 
-const repository = new UserRepository();
+const repository = new UserRepository(); 
 export default repository;
