@@ -81,7 +81,7 @@ class CommentsController {
     this.service = service;
   }
 
-  create = async (req, res, next) => {
+  create = async (req, res, next) => { 
     try {
       const data = req.body;
       data.user_id = req.user._id;

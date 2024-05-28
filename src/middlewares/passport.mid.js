@@ -233,7 +233,7 @@ import { createToken } from "../utils/token.util.js";
 const { GOOGLE_ID, GOOGLE_CLIENT, GITHUB_ID, GITHUB_CLIENT, SECRET } = process.env;
 
 passport.use(
-  "register",
+  "register", 
   new LocalStrategy(
     { passReqToCallback: true, usernameField: "email" },
     async (req, email, password, done) => {

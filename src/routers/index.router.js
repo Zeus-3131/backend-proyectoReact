@@ -47,6 +47,10 @@
 // const router = new IndexRouter();
 // export default router.getRouter();
 
+
+
+
+
 import CustomRouter from "./CustomRouter.js";
 import apiRouter from "./api/index.router.api.js";
 import ViewsRouter from "./views/index.view.js";

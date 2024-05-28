@@ -4,8 +4,8 @@ import dao from "../data/index.factory.js";
 const { orders } = dao;
 
 class OrdersRep {
-  constructor() {
-    this.model = orders;
+  constructor() { 
+    this.model = orders; 
   }
   create = async (data) => { 
     data = new OrderDTO(data);
