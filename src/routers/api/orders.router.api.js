@@ -44,26 +44,54 @@
 // export default ordersRouter.getRouter();
 
 
+// import CustomRouter from "../CustomRouter.js";
+// import {
+//   create,
+//   read,
+//   report,
+//   update,
+//   destroy, 
+//   readOne, 
+// } from "../../controllers/orders.controller.js";
+
+// class OrdersRouter extends CustomRouter {  
+//   init() {
+//     this.create("/", ["USER", "PREM", "PUBLIC"], create);
+//     this.read("/bills/:uid", ["ADMIN", "PUBLIC"], report);
+//     this.read("/", ["USER", "PREM", "PUBLIC"], read);
+//     this.update("/:oid", ["USER", "PREM", "PUBLIC"], update);
+//     this.destroy("/:oid", ["USER", "PREM", "PUBLIC"], destroy);
+//     this.readOne("/:oid", ["USER", "PREM", "PUBLIC"], readOne); // Agrega la ruta para readOne
+//   }
+// }
+
+// const ordersRouter = new OrdersRouter();
+// export default ordersRouter.getRouter();
+
+
+
 import CustomRouter from "../CustomRouter.js";
 import {
   create,
   read,
   report,
   update,
-  destroy,
-  readOne, // Importa la función readOne desde el controlador
+  destroy, 
+  readOne, 
 } from "../../controllers/orders.controller.js";
+import authMiddleware from "../../middlewares/isAuth.mid.js"; // Importa el middleware de autenticación
 
 class OrdersRouter extends CustomRouter {  
   init() {
-    this.create("/", ["USER", "PREM", "PUBLIC"], create);
-    this.read("/bills/:uid", ["ADMIN", "PUBLIC"], report);
-    this.read("/", ["USER", "PREM", "PUBLIC"], read);
-    this.update("/:oid", ["USER", "PREM", "PUBLIC"], update);
-    this.destroy("/:oid", ["USER", "PREM", "PUBLIC"], destroy);
-    this.readOne("/:oid", ["USER", "PREM", "PUBLIC"], readOne); // Agrega la ruta para readOne
+    this.router.post("/", authMiddleware, create); // Aplica el middleware de autenticación
+    this.router.get("/bills/:uid", authMiddleware, report); // Aplica el middleware de autenticación
+    this.router.get("/", authMiddleware, read); // Aplica el middleware de autenticación
+    this.router.put("/:oid", authMiddleware, update); // Aplica el middleware de autenticación
+    this.router.delete("/:oid", authMiddleware, destroy); // Aplica el middleware de autenticación
+    this.router.get("/:oid", authMiddleware, readOne); // Aplica el middleware de autenticación
   }
 }
 
 const ordersRouter = new OrdersRouter();
-export default ordersRouter.getRouter();
+ordersRouter.init(); // Inicializa las rutas
+export default ordersRouter.router; // Exporta el enrutador
