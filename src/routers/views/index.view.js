@@ -87,7 +87,7 @@ export default class ViewsRouter extends CustomRouter {
         }
         const all = await productsManager.read({ filter, options });
         return res.render("index", {
-          events: all.docs,
+          products: all.docs,
           next: all.nextPage,
           prev: all.prevPage,
           title: "INDEX",

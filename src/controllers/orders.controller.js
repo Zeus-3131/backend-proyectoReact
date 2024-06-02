@@ -151,7 +151,7 @@
 // const { create, read, report, update, destroy } = controller;
 // export { create, read, report, update, destroy };
 
-import OrderDTO from "../dto/order.dto.js";
+
 import service from "../services/orders.service.js";
 
 class OrdersController {
@@ -164,7 +164,7 @@ class OrdersController {
       if (!req.user || !req.user._id) {
         throw new Error("El usuario no está autenticado o no tiene un _id válido");
       }
-      const data = new OrderDTO({ ...req.body, user_id: req.user._id });
+      const data = { ...req.body, user_id: req.user._id };
       const response = await this.service.create(data);
       return res.status(201).json(response);
     } catch (error) {
@@ -175,8 +175,8 @@ class OrdersController {
   read = async (req, res, next) => {
     try {
       const options = {
-        limit: req.query.limit || 20,
-        page: req.query.page || 1,
+        limit: parseInt(req.query.limit) || 20,
+        page: parseInt(req.query.page) || 1,
         sort: { title: 1 },
         lean: true,
       };
@@ -194,7 +194,7 @@ class OrdersController {
     }
   };
 
-  readOne = async (req, res, next) => { // Implementación de readOne
+  readOne = async (req, res, next) => {
     try {
       const { oid } = req.params;
       const response = await this.service.readOne(oid);
@@ -237,5 +237,5 @@ class OrdersController {
 }
 
 const controller = new OrdersController();
-const { create, read, report, update, destroy, readOne } = controller; // Agrega readOne
-export { create, read, report, update, destroy, readOne }; // Agrega readOne
+const { create, read, report, update, destroy, readOne } = controller;
+export { create, read, report, update, destroy, readOne };

@@ -83,9 +83,7 @@ class ProductsController {
     try {
       const data = req.body;
       const response = await this.service.create(data);
-      return res
-        .status(201)
-        .json({ status: 201, response, message: "Producto creado" });
+      return res.status(201).json({ status: 201, response, message: "Producto creado" });
     } catch (error) {
       return next(error);
     }
@@ -102,6 +100,9 @@ class ProductsController {
       const filter = {};
       if (req.query.title) {
         filter.title = new RegExp(req.query.title.trim(), "i");
+      }
+      if (req.query.idcat) {
+        filter.idcat = req.query.idcat;
       }
       if (req.query.sort === "desc") {
         options.sort.title = "desc";
@@ -128,9 +129,7 @@ class ProductsController {
       const { pid } = req.params;
       const data = req.body;
       const response = await this.service.update(pid, data); 
-      return res
-        .status(200)
-        .json({ status: 200, response, message: "Producto actualizado" });
+      return res.status(200).json({ status: 200, response, message: "Producto actualizado" });
     } catch (error) {
       return next(error);
     }

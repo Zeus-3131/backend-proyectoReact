@@ -74,77 +74,77 @@
 // export { create, read, readOne, update, destroy };
 
 
-import service from "../services/comments.service.js";
+import Comment from "../data/mongo/models/comment.model.js";
+import CommentDTO from "../dto/comment.dto.js";
+import argsUtil from "../utils/args.util.js";
+import crypto from "crypto";
 
 class CommentsController {
-  constructor() {
-    this.service = service;
+  async create(req, res) {
+    try {
+      const commentDTO = new CommentDTO(req.body); // Usar CommentDTO para procesar los datos de entrada
+      const comment = await Comment.create(commentDTO);
+      res.status(201).json({ status: 201, comment, message: "Comentario creado" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 
-  create = async (req, res, next) => { 
+  async read(req, res) {
     try {
-      const data = req.body;
-      data.user_id = req.user._id;
-      const one = await this.service.create(data);
-      return res.status(201).json(one);
+      const comments = await Comment.find();
+      res.status(200).json({ status: 200, comments });
     } catch (error) {
-      return next(error);
+      res.status(500).json({ error: error.message });
     }
-  };
+  }
 
-  read = async (req, res, next) => {
+  async readOne(req, res) {
     try {
-      const options = {
-        limit: req.query.limit || 20,
-        page: req.query.page || 1,
-        sort: { title: 1 },
-        lean: true,
-      };
-      const filter = {};
-      if (req.query.product_id) {
-        filter.event_id = req.query.product_id;
+      const comment = await Comment.findById(req.params.cid);
+      if (!comment) {
+        return res.status(404).json({ error: "Comentario no encontrado" });
       }
-      if (req.query.sort === "desc") {
-        options.sort.title = "desc";
+      res.status(200).json(comment);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  async update(req, res) {
+    try {
+      const commentDTO = new CommentDTO(req.body); // Usar CommentDTO para procesar los datos de entrada
+      const { text, ...rest } = commentDTO;
+      const updateData = { ...rest };
+  
+      const comment = await Comment.findByIdAndUpdate(req.params.cid, { text, ...updateData }, { new: true });
+      if (!comment) {
+        return res.status(404).json({ error: "Comentario no encontrado" });
       }
-      const all = await this.service.read({ filter, options });
-      return res.status(200).json(all);
+  
+      res.status(200).json({ status: 200, comment });
     } catch (error) {
-      return next(error);
+      res.status(500).json({ error: error.message });
     }
-  };
+  }
+  
 
-  readOne = async (req, res, next) => {
+  async destroy(req, res) {
     try {
-      const { cid } = req.params;
-      const one = await this.service.readOne(cid);
-      return res.status(200).json(one);
+      const comment = await Comment.findByIdAndDelete(req.params.cid);
+      if (!comment) {
+        return res.status(404).json({ error: "Comentario no encontrado" });
+      }
+      res.status(200).json({
+        comment,
+        message: "Comentario eliminado satisfactoriamente",
+      });
     } catch (error) {
-      return next(error);
+      res.status(500).json({ error: error.message });
     }
-  };
-
-  update = async (req, res, next) => {
-    try {
-      const { cid } = req.params;
-      const data = req.body;
-      const one = await this.service.update(cid, data);
-      return res.status(200).json(one);
-    } catch (error) {
-      return next(error);
-    }
-  };
-
-  destroy = async (req, res, next) => {
-    try {
-      const { cid } = req.params;
-      const one = await this.service.destroy(cid);
-      return res.status(200).json(one);
-    } catch (error) {
-      return next(error);
-    }
-  };
+  }
 }
 
 const controller = new CommentsController();
-export const { create, read, readOne, update, destroy } = controller;
+const { create, read, readOne, update, destroy } = controller;
+export { create, read, readOne, update, destroy };

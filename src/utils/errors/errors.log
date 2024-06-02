@@ -402,3 +402,177 @@
 [31mERROR[39m: undefined
 [31mERROR[39m: undefined
 [31mERROR[39m: undefined
+[33mWARN[39m: Token not provided
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: Forbidden
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: Cannot read properties of undefined (reading 'toUpperCase')
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: Cannot read properties of undefined (reading 'toUpperCase')
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: Cannot read properties of undefined (reading 'toUpperCase')
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[33mWARN[39m: Unexpected string in JSON at position 53
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: undefined
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[33mWARN[39m: GET /favicon.ico not found path
+[31mERROR[39m: Invalid idcat value: H. Allowed values are M, F
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b51366021f not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[33mWARN[39m: GET /api/productos/65f892071eae62b513660221 not found path
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: undefined
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[33mWARN[39m: POST /api/me not found path
+[33mWARN[39m: POST /api/sessions/me not found path
+[33mWARN[39m: POST /api/sessions/me not found path
+[31mERROR[39m: Cannot read properties of null (reading '_id')
+[33mWARN[39m: POST /api/sessions/me not found path
+[31mERROR[39m: Cannot read properties of undefined (reading '_id')
