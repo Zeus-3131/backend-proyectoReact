@@ -42,5 +42,86 @@
     "precio": "600000",
     "stock": 50,
     "date": "2024-05-26T22:30:08.250Z"
+  },
+  {
+    "id": "7e5786abfe04e2670d723ebf",
+    "nombre": "Converse1",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "date": "2024-06-02T00:49:48.403Z"
+  },
+  {
+    "id": "b24e601653a45b0f05ff04ed",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T00:52:37.100Z"
+  },
+  {
+    "id": "4a9293c28f648ab8954c5165",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T00:55:43.012Z"
+  },
+  {
+    "id": "a509758f1e418b8c6e3af8c1",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T01:21:08.728Z",
+    "createdAt": "2024-06-02T01:21:08.729Z",
+    "updatedAt": "2024-06-02T01:21:08.729Z"
+  },
+  {
+    "id": "dcec36a3e634e78a8b77c9de",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T01:21:32.026Z",
+    "createdAt": "2024-06-02T01:21:32.026Z",
+    "updatedAt": "2024-06-02T01:21:32.026Z"
+  },
+  {
+    "id": "0d871cfe80f81ae97d81a8aa",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T01:21:46.093Z",
+    "createdAt": "2024-06-02T01:21:46.094Z",
+    "updatedAt": "2024-06-02T01:21:46.094Z"
+  },
+  {
+    "id": "a08fea969de2f6d920ce7d35",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T01:23:02.382Z",
+    "createdAt": "2024-06-02T01:23:02.382Z",
+    "updatedAt": "2024-06-02T01:23:02.382Z"
+  },
+  {
+    "id": "2db08eaa6e66b591aaa09c77",
+    "nombre": "Converse2",
+    "imagen": "https://i.postimg.cc/HxdvTwqJ/events.jpg",
+    "precio": "600000",
+    "stock": 50,
+    "idcat": "M",
+    "date": "2024-06-02T01:23:15.817Z",
+    "createdAt": "2024-06-02T01:23:15.819Z",
+    "updatedAt": "2024-06-02T01:23:15.819Z"
   }
 ]

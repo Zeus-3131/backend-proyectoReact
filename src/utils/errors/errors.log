@@ -576,3 +576,40 @@
 [31mERROR[39m: Cannot read properties of null (reading '_id')
 [33mWARN[39m: POST /api/sessions/me not found path
 [31mERROR[39m: Cannot read properties of undefined (reading '_id')
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('69f32b2fcc3568b7d7e14de5') }" on model "products"
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('d1db9f74abb78f3c94d1f142') }" on model "products"
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('8c6aaf1819c6ce82153c4197') }" on model "products"
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('6b02e44932be1105a4944132') }" on model "products"
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('4deaeb8facb92f3981cf93f8') }" on model "products"
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('4e40a90f9d1087cd5f6e98bf') }" on model "products"
+[31mERROR[39m: No document found for query "{ _id: new ObjectId('9002753e74dfee075fb3896e') }" on model "products"
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[31mERROR[39m: Invalid idcat value: undefined. Allowed values are M, F
+[33mWARN[39m: GET /scritp/signout.js not found path
+[33mWARN[39m: GET /api/commens not found path
+[33mWARN[39m: NOT FOUND!
+[31mERROR[39m: Cannot read properties of undefined (reading 'repository')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[31mERROR[39m: Cannot read properties of null (reading 'email')
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
+[33mWARN[39m: POST /api/sessions/verify not found path
