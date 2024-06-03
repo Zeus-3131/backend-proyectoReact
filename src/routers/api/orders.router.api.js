@@ -126,6 +126,55 @@
 
 
 
+// import CustomRouter from "../CustomRouter.js";
+// import {
+//   create,
+//   read,
+//   report,
+//   update,
+//   destroy,
+// } from "../../controllers/orders.controller.js";
+
+// class OrdersRouter extends CustomRouter {
+//   init() {
+//     this.create("/", ["USER", "PREM","PUBLIC"], create); //puse public para pruebas
+//     // this.read("/bills/:uid", ["ADMIN","PUBLIC"], report); //puse public para pruebas
+//     this.read("/", ["USER", "PREM","PUBLIC"], read); //puse public para pruebas
+//     this.update("/:oid", ["USER", "PREM","PUBLIC"], update); //puse public para pruebas
+//     this.destroy("/:oid", ["USER", "PREM","PUBLIC"], destroy); //puse public para pruebas
+//   }
+// }
+
+// const ordersRouter = new OrdersRouter(); 
+// export default ordersRouter.getRouter();
+
+
+
+// funciona
+// import CustomRouter from "../CustomRouter.js";
+// import {
+//   create,
+//   read,
+//   report,
+//   update,
+//   destroy,
+// } from "../../controllers/orders.controller.js";
+// import isauth from '../../middlewares/isAuth.mid.js';
+
+// class OrdersRouter extends CustomRouter {
+//   init() {
+//     this.create("/", ["USER", "PREM","PUBLIC"], isauth, create); //puse public para pruebas
+//     this.read("/bills/:uid", ["ADMIN","PUBLIC"], isauth, report); //puse public para pruebas
+//     this.read("/", ["USER", "PREM","PUBLIC"], isauth, read); //puse public para pruebas
+//     this.update("/:oid", ["USER", "PREM","PUBLIC"], isauth, update); //puse public para pruebas
+//     this.destroy("/:oid", ["USER", "PREM","PUBLIC"], isauth, destroy); //puse public para pruebas
+//   }
+// }
+
+// const ordersRouter = new OrdersRouter(); 
+// export default ordersRouter.getRouter();
+
+
 import CustomRouter from "../CustomRouter.js";
 import {
   create,
@@ -133,17 +182,20 @@ import {
   report,
   update,
   destroy,
+  readOne,
 } from "../../controllers/orders.controller.js";
+import isauth from '../../middlewares/isAuth.mid.js';
 
 class OrdersRouter extends CustomRouter {
   init() {
-    this.create("/", ["USER", "PREM","PUBLIC"], create); //puse public para pruebas
-    // this.read("/bills/:uid", ["ADMIN","PUBLIC"], report); //puse public para pruebas
-    this.read("/", ["USER", "PREM","PUBLIC"], read); //puse public para pruebas
-    this.update("/:oid", ["USER", "PREM","PUBLIC"], update); //puse public para pruebas
-    this.destroy("/:oid", ["USER", "PREM","PUBLIC"], destroy); //puse public para pruebas
+    this.create("/", ["USER", "PREM", "PUBLIC"], isauth, create);
+    this.read("/bills/:uid", ["ADMIN", "PUBLIC"], isauth, report);
+    this.read("/", ["USER", "PREM", "PUBLIC"], isauth, read);
+    this.update("/:oid", ["USER", "PREM", "PUBLIC"], isauth, update);
+    this.destroy("/:oid", ["USER", "PREM", "PUBLIC"], isauth, destroy);
+    this.readOne("/:oid", ["USER", "PREM", "PUBLIC"], isauth, readOne); // Agregado readOne al enrutador
   }
 }
 
-const ordersRouter = new OrdersRouter();
+const ordersRouter = new OrdersRouter(); 
 export default ordersRouter.getRouter();

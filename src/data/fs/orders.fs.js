@@ -6,10 +6,10 @@ class OrdersManager {
     try {
       const exists = fs.existsSync(this.path);
       if (!exists) {
-        const data = JSON.stringify([], null, 2);
+        const data = JSON.stringify([], null, 2); 
         fs.writeFileSync(this.path, data);
       } else {
-        this.orders = JSON.parse(fs.readFileSync(this.path, "utf-8"));
+        this.orders = JSON.parse(fs.readFileSync(this.path, "utf-8")); 
       }
     } catch (error) {
       throw error;

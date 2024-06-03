@@ -613,3 +613,52 @@
 [33mWARN[39m: POST /api/sessions/verify not found path
 [33mWARN[39m: POST /api/sessions/verify not found path
 [33mWARN[39m: POST /api/sessions/verify not found path
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: El usuario no está autenticado o no tiene un _id válido
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[33mWARN[39m: GET /api/orders/665cb4418b70768212224c41?= not found path
+[33mWARN[39m: GET /api/orders/665cb4418b70768212224c41 not found path
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: undefined
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: filter is not defined
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: filter is not defined
+[31mERROR[39m: filter is not defined
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.paginate is not a function
+[31mERROR[39m: this.model.findById is not a function
+[31mERROR[39m: this.model.findByIdAndUpdate is not a function
+[31mERROR[39m: this.model.findByIdAndDelete is not a function
