@@ -188,12 +188,12 @@ import isauth from '../../middlewares/isAuth.mid.js';
 
 class OrdersRouter extends CustomRouter {
   init() {
-    this.create("/", ["USER", "PREM", "PUBLIC"], isauth, create);
-    this.read("/bills/:uid", ["ADMIN", "PUBLIC"], isauth, report);
-    this.read("/", ["USER", "PREM", "PUBLIC"], isauth, read);
-    this.update("/:oid", ["USER", "PREM", "PUBLIC"], isauth, update);
-    this.destroy("/:oid", ["USER", "PREM", "PUBLIC"], isauth, destroy);
-    this.readOne("/:oid", ["USER", "PREM", "PUBLIC"], isauth, readOne); // Agregado readOne al enrutador
+    this.create("/", ["USER", "PREM"], isauth, create);
+    this.read("/bills/:uid", ["ADMIN"], isauth, report);
+    this.read("/", ["USER", "PREM"], isauth, read);
+    this.update("/:oid", ["USER", "PREM"], isauth, update);
+    this.destroy("/:oid", ["USER", "PREM"], isauth, destroy);
+    this.readOne("/:oid", ["USER", "PREM"], isauth, readOne); // Agregado readOne al enrutador
   }
 }
 

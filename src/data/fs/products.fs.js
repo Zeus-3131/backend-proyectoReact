@@ -264,7 +264,7 @@ import ProductDTO from "../../dto/product.dto.js";
 import notFoundOne from "../../utils/notFoundOne.utils.js";
 
 class ProductsManager {
-  async create(data) {
+  async create(data) { 
     try {
       if (!data.nombre || data.nombre.trim() === '') {
         throw new Error("El nombre del producto es requerido");

@@ -32,11 +32,11 @@ import {
 
 class CommentsRouter extends CustomRouter {
   init() {
-    this.create("/", ["USER", "PREM","PUBLIC"], create);
+    this.create("/", ["USER", "PREM"], create);
     this.read("/", ["PUBLIC"], read);
     this.read("/:cid", ["PUBLIC"], readOne);
-    this.update("/:cid", ["USER", "PREM","PUBLIC"], update);
-    this.destroy("/:cid", ["USER", "PREM","PUBLIC"], destroy);
+    this.update("/:cid", ["USER", "PREM"], update);
+    this.destroy("/:cid", ["USER", "PREM"], destroy);
   }
 }
 

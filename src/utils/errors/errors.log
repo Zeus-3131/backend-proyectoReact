@@ -662,3 +662,7 @@
 [31mERROR[39m: this.model.findById is not a function
 [31mERROR[39m: this.model.findByIdAndUpdate is not a function
 [31mERROR[39m: this.model.findByIdAndDelete is not a function
+[31mERROR[39m: ¡No hay órdenes!
+[31mERROR[39m: users validation failed: role: Cast to Number failed for value "admin" (type string) at path "role", username: Path `username` is required.
+[31mERROR[39m: users validation failed: role: Cast to Number failed for value "admin" (type string) at path "role", username: Path `username` is required.
+[31mERROR[39m: users validation failed: role: Cast to Number failed for value "admin" (type string) at path "role", username: Path `username` is required.
