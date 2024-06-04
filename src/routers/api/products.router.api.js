@@ -1,26 +1,3 @@
-// import CustomRouter from "../CustomRouter.js";
-// import {
-//   create,
-//   read,
-//   readOne,
-//   update,
-//   destroy,
-// } from "../../controllers/products.controller.js";
-
-// class ProductsRouter extends CustomRouter {
-//   init() {
-//     this.create("/", ["ADMIN", "PREM","PUBLIC"], create);//puesto el public para pruebas
-//     this.read("/", ["PUBLIC"], read);
-//     this.read("/:eid", ["PUBLIC"], readOne);
-//     this.update("/:eid", ["ADMIN", "PREM","PUBLIC"], update);
-//     this.destroy("/:eid", ["ADMIN", "PREM","PUBLIC"], destroy);
-//   }
-// }
-
-// const productsRouter = new ProductsRouter();
-// export default productsRouter.getRouter();
- 
-
 import CustomRouter from "../CustomRouter.js";
 import {
   create,
